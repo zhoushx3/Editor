@@ -1,7 +1,7 @@
-import $ from 'jquery'
+import Vue from 'vue'
+import Editor from './Editor.vue'
 
-setTimeout(()=>{
-	
-	$('body').html('??????');
-	
-}, 1000)
+import './less/global.less'
+import './less/common.less'
+
+new Vue(Editor)

@@ -8,14 +8,13 @@
 
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
 	#canvas {
 		position: absolute;
 		top: 30px;
 		bottom: 0;
 		left: 300px;
-		// right: 300px;
-		right: 0;
+		right: 300px;
 		background-color: #aaa;
 		overflow: auto;
 
@@ -35,6 +34,7 @@
 <script>
 	import Text from './Text.vue'
 	import Img from './Img.vue'
+	import Geometric from './Geometric.vue'
 
 	export default {
 		name: 'canvas-element',
@@ -45,9 +45,6 @@
 			}
 		},
 		computed: {
-			// elementComponent(index) {
-			// 	return this.content[index].type + '-component'
-			// }
 		},
 		methods: {
 			elementComponent(key) {
@@ -56,7 +53,8 @@
 		},
 		components: {
 			'text-component': Text,
-			'img-component': Img
+			'img-component': Img,
+			'geometric-component': Geometric,
 		},
 		watch: {
 			scale: function(value) {

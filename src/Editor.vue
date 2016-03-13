@@ -1,16 +1,15 @@
 <template lang="jade">
 	.head
 		input( type="range", min="1" max="10" step="0.01" v-model="scale" )
-	element-list( :content="json.content",
+	element-list( :content="content",
 							   v-ref:elementlist )
 	canvas-element( :scale="scale",
-									:content="json.content",
+									:content="content",
 									v-ref:canvaselement)
-	// 
-		controller(:content="json.content")
+	controller(:content="content")
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
 	.head {
 		height: 30px;
 		width: 100%;
@@ -41,11 +40,12 @@
 <script>
 	import Drag from './helper/Drag.js'
 	import ElementList from './components/ElementList.vue'
-	import CanvasElement from './components/CanvasElement.vue'
+	import CanvasElement from './components/CanvasElement/CanvasElement.vue'
 	import Controller from './components/Controller.vue'
 	import resumeJSON from './helper/resumeJSON.js'
 	import DragEvent from './helper/DragEvent.js'
 	import FlexEvent from './helper/FlexEvent.js'
+	import dataEvent from './helper/DataEvent.js'
 	import { px, lower, upper } from './helper/func.js'
 
 	import './less/common.less'
@@ -57,9 +57,7 @@
 		data() {
 			return {
 				scale: 1,
-				json: {
-					content: []
-				}
+				content: {}
 			}
 		},
 
@@ -68,13 +66,11 @@
 			'canvas-element': CanvasElement,
 			'controller': Controller
 		},
-		events: {
-
-		},
+		events: dataEvent,
 		methods: {
 			dragCallback(key, delX, delY) {
 				let k = key.replace('d_', '')
-				let originStyle = this.json.content[k]['style']
+				let originStyle = this.content[k]['style']
 				originStyle['left'] = parseInt(originStyle['left']) + delX + 'px'
 				originStyle['top'] = parseInt(originStyle['top']) + delY + 'px'
 			},
@@ -88,7 +84,7 @@
 				let minH = 10
 				let k = key.replace('f_', '')
 
-				let originStyle = this.json.content[k]['style']
+				let originStyle = this.content[k]['style']
 				let left = parseInt(originStyle['left'])
 				let top = parseInt(originStyle['top'])
 				let width = parseInt(originStyle['width'])
@@ -113,19 +109,19 @@
 			}
 
 		},
+		watch: {
+		},
 		ready() {
-			let self = this
+			let vm = this
 
-			self.resumeJSON = new resumeJSON()
-			self.resumeJSON.init()
-				.then( (json)=>{
-					self.json = json
-				}, (err) => {
-					console.log(err)
-				})
+			resumeJSON.init(vm).then( (bool)=>{
+				if (bool) {
+					this.content = resumeJSON.getContent()
+				}
+			})
 
-			window.dragEvent = new DragEvent( self.dragCallback.bind(self), self.dragUpCallback.bind(self), document.getElementById('canvas') )
-			window.flexEvent = new FlexEvent( self.flexCallback.bind(self), document.getElementById('canvas'))
+			window.dragEvent = new DragEvent( vm.dragCallback.bind(vm), vm.dragUpCallback.bind(vm), document.getElementById('canvas') )
+			window.flexEvent = new FlexEvent( vm.flexCallback.bind(vm), document.getElementById('canvas'))
 		}
 	}
 </script>

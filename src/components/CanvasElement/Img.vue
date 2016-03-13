@@ -3,7 +3,7 @@
 		img(:src="element.src", :alt="element.alt")
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
 	img {
 		width: 100%;
 		height: 100%;
@@ -11,7 +11,7 @@
 </style>
 
 <script>
-	import Wrapper from './Wrapper.vue'
+	import Wrapper from '../Wrapper.vue'
 
 	export default {
 		name: 'img-component',

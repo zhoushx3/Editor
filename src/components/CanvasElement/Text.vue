@@ -10,7 +10,7 @@
 </style>
 
 <script>
-	import Wrapper from './Wrapper.vue'
+	import Wrapper from '../Wrapper.vue'
 
 	export default {
 		name: 'text-component',

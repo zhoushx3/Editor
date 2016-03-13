@@ -1,0 +1,410 @@
+.g-square {
+	width: 30px;
+	height: 30px;
+	background: #D871FF;
+}
+
+.g-rectangle {
+	width: 30px;
+	height: 10px;
+	background: #D871FF;
+}
+
+.g-circle {
+	width: 30px;
+	height: 30px;
+	background: #D871FF;
+	border-radius: 50%;
+}
+
+.g-oval {
+  width: 30px;
+  height: 10px;
+  background: #D871FF;
+  border-radius: 15px / 5px;
+}
+
+.g-triangle {
+	width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid #D871FF;
+}
+
+.g-right-triangle {
+	width: 0;
+	height: 0;
+	border-top: 30px solid #D871FF;
+	border-right: 30px solid transparent;
+}
+
+.g-trapezoid {
+  width: 30px;
+  height: 0;
+  border-bottom: 25px solid #D871FF;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+}
+
+.g-parallelogram {
+  width: 30px;
+  height: 30px;
+  transform: skew(20deg);
+  background: #D871FF;
+}
+
+.g-star-six {
+  transform: translateY(-4px);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 26px solid #D871FF;
+  position: relative;
+}
+
+.g-star-six:after {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 26px solid #D871FF;
+  position: absolute;
+  content: "";
+  top: 10px;
+  left: -15px;
+}
+
+.g-star-five {
+	position: relative;
+  color: #D871FF;
+  width: 0px;
+  height: 0px;
+  border-right: 15px solid transparent;
+  border-bottom: 12px solid #D871FF;
+  border-left: 15px solid transparent;
+  transform: rotate(39deg);
+}
+
+.g-star-five:before {
+  border-bottom: 8px solid #D871FF;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -2px;
+  left: -14px;
+  display: block;
+  content: '';
+  transform: rotate(-150deg);
+}
+
+.g-star-five:after {
+  position: absolute;
+  display: block;
+  color: #D871FF;
+  top: 0px;
+  left: -15px;
+  width: 0px;
+  height: 0px;
+  border-right: 15px solid transparent;
+  border-bottom: 12px solid #D871FF;
+  border-left: 15px solid transparent;
+  transform: rotate(-78deg);
+  content: '';
+}
+
+.g-pentagon {
+    position: relative;
+    width: 54px;
+    border-width: 50px 18px 0;
+    border-style: solid;
+    border-color: #D871FF transparent;
+}
+
+.g-pentagon:before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -85px;
+    left: -18px;
+    border-width: 0 45px 35px;
+    border-style: solid;
+    border-color: transparent transparent #D871FF;
+}
+
+.g-octagon {
+	width: 100px;
+	height: 100px;
+	background: #D871FF;
+	position: relative;
+}
+
+.g-octagon:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-bottom: 29px solid #D871FF;
+	border-left: 29px solid #eee;
+	border-right: 29px solid #eee;
+	width: 42px;
+	height: 0;
+}
+
+.g-octagon:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	border-top: 29px solid #D871FF;
+	border-left: 29px solid #eee;
+	border-right: 29px solid #eee;
+	width: 42px;
+	height: 0;
+}
+
+.g-heart {
+	width: 0;
+	height: 0;
+  position: relative;
+	transform: translate(-17px, -12px);
+}
+
+.g-heart:before,
+.g-heart:after {
+  position: absolute;
+  content: "";
+  left: 16px;
+  top: 0;
+  width: 16px;
+  height: 30px;
+  background: #D871FF;
+  border-radius: 10px 10px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.g-heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin :100% 100%;
+}
+
+
+.g-infinity {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform: translate(-22px, -10px);
+}
+
+.g-infinity:before,
+.g-infinity:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border: 5px solid #D871FF;
+  border-radius: 50% 50% 0 50%;
+  transform: rotate(-45deg);
+}
+
+.g-infinity:after {
+  left: 21px;
+  right: 0;
+  border-radius: 50px 50px 50px 0;
+  transform: rotate(45deg);
+}
+
+.g-cut-diamond {
+  border-style: solid;
+  border-color: transparent transparent #D871FF transparent;
+  border-width: 0 25px 25px 25px;
+  height: 0;
+  width: 50px;
+  position: relative;
+  margin: 20px 0 50px 0;
+}
+
+.g-cut-diamond:after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: -25px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: #D871FF transparent transparent transparent;
+  border-width: 70px 50px 0 50px;
+}
+
+.g-pacman {
+  width: 0px;
+  height: 0px;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #D871FF;
+  border-left: 15px solid #D871FF;
+  border-bottom: 15px solid #D871FF;
+  border-radius: 15px
+}
+
+.g-talkbubble {
+  width: 30px;
+  height: 20px;
+  background: #D871FF;
+  position: relative;
+  border-radius: 5px;
+}
+
+.g-talkbubble:before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 6px;
+  width: 0;
+  height: 0;
+  border-top: 3px solid transparent;
+  border-right: 6px solid #D871FF;
+  border-bottom: 3px solid transparent;
+}
+
+.g-burst-8 {
+  background: #D871FF;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  text-align: center;
+}
+
+.g-burst-8:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background: #D871FF;
+  transform: rotate(135deg);
+}
+
+.g-yin-yang {
+	width: 96px;
+	height: 48px;
+	background: #eee;
+	border-color: #D871FF;
+	border-style: solid;
+	border-width: 2px 2px 50px 2px;
+	border-radius: 100%;
+	position: relative;
+}
+
+.g-yin-yang:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0;
+	background: #eee;
+	border: 18px solid #D871FF;
+	border-radius: 100%;
+	width: 12px;
+	height: 12px;
+}
+
+.g-yin-yang:after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background: #D871FF;
+	border: 18px solid #eee;
+	border-radius:100%;
+	width: 12px;
+	height: 12px;
+}
+
+.g-badge-ribbon {
+  transform: translateY(-8px);
+  position: relative;
+	background: #D871FF;
+	height: 27px;
+	width: 27px;
+	border-radius: 50%;
+}
+
+.g-badge-ribbon:before,
+.g-badge-ribbon:after {
+  content: '';
+  position: absolute;
+  border-bottom: 16px solid #D871FF;
+  border-left: 8px solid transparent;
+  border-right: 32px solid transparent;
+  top: 16px;
+  transform: rotate(55deg);
+}
+
+.g-badge-ribbon:after {
+  transform: rotate3d(-194, -382, 0, 180deg);
+  left: -13px;
+}
+
+.g-magnifying-glass {
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #D871FF;
+    position: relative;
+    border-radius: 50%;
+}
+
+.g-magnifying-glass::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  right: -9px;
+  bottom: -5px;
+  background: #D871FF;
+  width: 15px;
+  height: 2px;
+  transform: rotate(47deg);
+}
+
+.g-moon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: 10px 6px 0 0 #D871FF;
+  transform: translate(-13px, -4px);
+  /*调整放在容器中间*/
+}
+
+.g-cone {
+	width: 0;
+	height: 0;
+  border-left: 17px solid transparent;
+  border-right: 17px solid transparent;
+  border-top: 35px solid #D871FF;
+  border-radius: 50%;
+}
+
+.g-cross {
+  position: relative;
+  width: 10px;
+  height: 30px;
+  background: #D871FF;
+}
+
+.g-cross:after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  width: 30px;
+  height: 10px;
+  background: #D871FF;
+}

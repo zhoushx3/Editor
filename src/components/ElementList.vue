@@ -4,9 +4,13 @@
 			li(@click="toggleHook($key)")
 				.hook {{ hook[$key] ? 'O' : '' }}
 				span {{ d.type === "text" ? d.text : d.alt }}
+		.add-element(@click="toggleShow") {{ show ? '收起' : '添加' }}
+		element-container(v-bind:class="animateClass")
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
+	@import '../less/variable.less';
+
 	.elementList {
 		position: absolute;
 		top: 30px;
@@ -40,17 +44,41 @@
 			}
 		}
 
+		.add-element {
+			width: 70px;
+	    font-size: 12px;
+	    position: absolute;
+	    bottom: 0;
+	    right: 0;
+	    height: 30px;
+	    line-height: 30px;
+	    text-align: center;
+	    background-color: #404040;
+	    color: #fff;
+	    cursor: pointer;
+	    z-index: @add-element-zIndex;
+		}
+
 	}
 </style>
 
 
 <script>
+	import ElementContainer from './ElementContainer.vue'
+
 	export default {
 		name: 'elementList',
 		props: ['content'],
 		data() {
+			/* 
+				hook: 是否选中，打勾
+				show: 是否显示元素选择板块 
+			*/
 			return {
-				hook: []
+				hook: [],
+				show: false,
+				// animateClass: 'hidden',
+				animateClass: 'bounceInLeft'
 			}
 		},
 		watch: {
@@ -63,7 +91,15 @@
 				} else {
 					window.dragEvent.unregister('d_' + key)
 				}
+			},
+			toggleShow: function() {
+				// 这种写法是为了初始化 animateClass 为''，接下来则在另外两个值里切换
+				this.animateClass = this.animateClass === 'bounceInLeft' ? 'bounceOutLeft' : 'bounceInLeft'
+				this.show = !this.show
 			}
+		},
+		components: {
+			'element-container': ElementContainer
 		},
 		ready() {
 

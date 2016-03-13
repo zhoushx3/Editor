@@ -1,27 +1,28 @@
 
-export default class resumeJSON {
+class resumeJSON {
 	constructor() {
 		this.json = {}
 	}
 
-	init() {
+	init(vm) {
+		this.vm = vm
 		return new Promise( (resolve, reject) => {
 			$.ajax({
 				type: 'get',
 				url: 'build/data.json',
 				success: (json)=>{
 					this.json = json
-					resolve(json)
+					resolve(true)
 				},
 				fail: (err)=>{
-					reject(err)
+					reject(false)
 				}
 			})
 		})
 	}
 
-	getJSON() {
-		return this.json
+	getContent() {
+		return this.json.content
 	}
 
 	readFromFile() {
@@ -32,3 +33,5 @@ export default class resumeJSON {
 
 	}
 }
+
+export default new resumeJSON()

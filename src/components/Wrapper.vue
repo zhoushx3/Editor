@@ -1,15 +1,16 @@
 <template lang="jade">
 	.wrapper(:style="style")
-		.mask(@mousedown="drag", :data-key="'d_' + key")
-			.leftToFlex.flexCircle(@mousedown="flex('left', $event)")
-			.rightToFlex.flexCircle(@mousedown="flex('right', $event)")
-			.topToFlex.flexCircle(@mousedown="flex('top', $event)")
-			.downToFlex.flexCircle(@mousedown="flex('bottom', $event)")
+		.mask(@mousedown="drag")
+			template(v-if="type !== 'geometric'")
+				.leftToFlex.flexCircle(@mousedown="flex('left', $event)")
+				.rightToFlex.flexCircle(@mousedown="flex('right', $event)")
+				.topToFlex.flexCircle(@mousedown="flex('top', $event)")
+				.downToFlex.flexCircle(@mousedown="flex('bottom', $event)")
 		slot
 
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
 	.wrapper {
 		position: absolute;
 		outline: none;
@@ -32,12 +33,11 @@
 				}
 			}
 
-
 			.flexCircle {
 				width: 10px;
 				height: 10px;
 				position: absolute;
-				background-color: #fff;
+				background-color: #aaa;
 				border-radius: 50%;
 				z-index: 2;
 				display: none;
@@ -72,7 +72,6 @@
 			.downToFlex {
 				bottom: -5px;
 			}
-
 		}
 	}
 </style>
@@ -82,27 +81,25 @@
 
 	export default {
 		name: 'wrapper',
-		props: ['style', 'key'],
+		props: ['style', 'key', 'type'],
 		data() {
 			return {
 			}
 		},
 		methods: {
 			drag: function(event) {
+				// 此处是为了禁掉浏览器默认事件，并且禁止节点传播，下同
 				event.preventDefault()
 				event.stopPropagation()
 				// 拖拽
 				window.dragEvent.trigger('d_' + this.key, event.clientX, event.clientY)
-				return false // 此处是为了禁掉浏览器默认事件，并且禁止节点传播，下同
 			},
-			flex: function(type, event) {
+			flex: function(direction, event) {
 				event.preventDefault()
 				event.stopPropagation()
-				// 伸缩
-				window.flexEvent.register('f_' + this.key, event.clientX, event.clientY, type)
-				return false
+				// 横向纵向伸缩 
+				window.flexEvent.register('f_' + this.key, event.clientX, event.clientY, direction)
 			}
 		}
-
 	}
 </script>

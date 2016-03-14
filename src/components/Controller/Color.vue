@@ -1,9 +1,8 @@
 <template lang="jade">
-	.controller 
-		template(v-if="!selectKey")
+	.controller
+		template(v-if="!selectElement")
 			h2 点击画布上的元素
 		template(v-else)
-			font(:element="content[selectKey]")
 
 </template>
 
@@ -29,18 +28,11 @@
 	import Color from './Color.vue'
 
 	export default {
-		name: 'controller',
-		props: ['content', 'selectKey'],
-		data() {
-			return {
-			}
-		},
+		name: 'color-controller',
+		props: [''],
 		components: {
 			'font': Font,
 			'color': Color,
-		},
-		ready() {
-			console.log(this.selectKey)
 		}
 	}
 

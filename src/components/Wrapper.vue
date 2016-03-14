@@ -77,7 +77,8 @@
 </style>
 
 <script>
-	import {px} from '../helper/func.js'
+	import { px } from '../helper/func.js'
+	import { SELECT_ELEMENT } from '../helper/DataEvent.js'
 
 	export default {
 		name: 'wrapper',
@@ -92,6 +93,7 @@
 				event.preventDefault()
 				event.stopPropagation()
 				// 拖拽
+				this.$dispatch(SELECT_ELEMENT, this.key)
 				window.dragEvent.trigger('d_' + this.key, event.clientX, event.clientY)
 			},
 			flex: function(direction, event) {

@@ -11,7 +11,7 @@
 </template>
 
 <style lang="less" scoped>
-	@import '../less/variable.less';
+	@import '../../less/variable.less';
 
 	.geometric-nest {
   	position: absolute;
@@ -65,8 +65,8 @@
 </style>
 
 <script>
-	import cssShape from '../data/cssShape.js'
-	import { ADD_ELEMENT } from '../helper/DataEvent.js'
+	import cssShape from '../../data/cssShape.js'
+	import { ADD_ELEMENT } from '../../helper/DataEvent.js'
 
 	export default {
 		name: 'geometric-nest',

@@ -1,6 +1,7 @@
 import resumeJSON from './resumeJSON.js'
 
 export const ADD_ELEMENT = 'add_element'
+export const SELECT_ELEMENT = 'select_element'
 
 function geometricTemplate(c) {
 	return {
@@ -17,6 +18,7 @@ function geometricTemplate(c) {
 // 由 Editor.vue 调用
 export default {
 	/*
+		添加画布元素
 		@type -> geometric / icon / img / text
 		@c    -> the className or 
 	*/
@@ -31,5 +33,12 @@ export default {
 				})
 			break
 		}
+	},
+	/*
+		选择画布元素并在右侧显示对应工具
+		@key: json.content中的键即id
+	*/
+	[SELECT_ELEMENT]: function(key) {
+		this.selectKey = key
 	}
 }

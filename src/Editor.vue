@@ -6,7 +6,8 @@
 	canvas-element( :scale="scale",
 									:content="content",
 									v-ref:canvaselement)
-	controller(:content="content")
+	controller(:content="content", 
+						 :select-key="selectKey")
 </template>
 
 <style lang="less" scoped>
@@ -38,10 +39,9 @@
 </style>
 
 <script>
-	import Drag from './helper/Drag.js'
 	import ElementList from './components/ElementList.vue'
 	import CanvasElement from './components/CanvasElement/CanvasElement.vue'
-	import Controller from './components/Controller.vue'
+	import Controller from './components/Controller/Controller.vue'
 	import resumeJSON from './helper/resumeJSON.js'
 	import DragEvent from './helper/DragEvent.js'
 	import FlexEvent from './helper/FlexEvent.js'
@@ -57,7 +57,8 @@
 		data() {
 			return {
 				scale: 1,
-				content: {}
+				content: {},
+				selectKey: null
 			}
 		},
 
@@ -110,6 +111,9 @@
 
 		},
 		watch: {
+			selectKey: function(value) {
+				console.log(value)
+			}
 		},
 		ready() {
 			let vm = this

@@ -60,10 +60,10 @@
 
 
 <script>
-	import IconNest from './IconNest.vue'
-	import PicNest from './PicNest.vue'
-	import TextNest from './TextNest.vue'
-	import GeometricNest from './GeometricNest.vue'
+	import IconNest from './Nest/IconNest.vue'
+	import PicNest from './Nest/PicNest.vue'
+	import TextNest from './Nest/TextNest.vue'
+	import GeometricNest from './Nest/GeometricNest.vue'
 
 	export default {
 		name: 'elementContainer',

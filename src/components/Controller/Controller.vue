@@ -3,7 +3,9 @@
 		template(v-if="!selectKey")
 			h2 点击画布上的元素
 		template(v-else)
-			font(:element="content[selectKey]")
+			// font(:element="content[selectKey]")
+			color(:element="content[selectKey]" v-if="showColorController")
+
 
 </template>
 
@@ -15,11 +17,6 @@
 		right: 0;
 		width: 300px;
 		border-left: 1px solid #000;
-		display: flex;
-		justify-content: center;
-		align-content: center;
-		align-items: center;
-
 	}
 </style>
 
@@ -33,6 +30,12 @@
 		props: ['content', 'selectKey'],
 		data() {
 			return {
+			}
+		},
+		computed: {
+			showColorController() {
+				let type = ['icon', 'text', 'geomestry', 'background']
+				return type.indexOf(this.content[this.selectKey]['type']) !== -1
 			}
 		},
 		components: {

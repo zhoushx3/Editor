@@ -2,8 +2,7 @@
 	.container
 		label 字体类型
 		select(v-model="selectFont")
-			option(v-for="o in fontFamily", :value="o.family")
-				{{ o.name }}
+			option(v-for="o in fontFamily", :value="o.family") {{ o.name }}
 </template>
 
 <style lang="less">

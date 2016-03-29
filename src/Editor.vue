@@ -6,7 +6,7 @@
 	canvas-element( :scale="scale",
 									:content="content",
 									v-ref:canvaselement)
-	controller(:content="content", 
+	controller(:content="content",
 						 :select-key="selectKey")
 </template>
 
@@ -46,7 +46,7 @@
 	import DragEvent from './helper/DragEvent.js'
 	import FlexEvent from './helper/FlexEvent.js'
 	import dataEvent from './helper/DataEvent.js'
-	import { px, lower, upper } from './helper/func.js'
+	import { px, lower, upper, gouGu } from './helper/func.js'
 
 	import './less/common.less'
 
@@ -80,31 +80,40 @@
 				this.$refs.elementlist.hook = []
 			},
 			// 伸缩设置最小宽度、最小高度
-			flexCallback(key, del, type) {
+			flexCallback(key, delX, delY, direction) {
 				let minW = 10
 				let minH = 10
 				let k = key.replace('f_', '')
 
+				let originPosition = this.content[k]['position']
 				let originStyle = this.content[k]['style']
-				let left = parseInt(originStyle['left'])
-				let top = parseInt(originStyle['top'])
+
+				let left = parseInt(originPosition['left'])
+				let top = parseInt(originPosition['top'])
 				let width = parseInt(originStyle['width'])
 				let height = parseInt(originStyle['height'])
 
-				switch (type) {
+				switch (direction) {
 					case 'left':
-						originStyle['left']  = px ( upper( left + del, left + width - minW ) )
-						originStyle['width'] = px ( lower( width - del, minW ) )
+						originPosition['left']  = px ( upper( left + del, left + width - minW ) )
+						originStyle['width'] = px ( lower( width - delX, minW ) )
 					break
 					case 'right':
-						originStyle['width'] = px ( lower( width + del, minW ) )
+						originStyle['width'] = px ( lower( width + delX, minW ) )
 					break
 					case 'top':
-						originStyle['top'] = px ( upper( top + del, top + height - minH ) )
-						originStyle['height']  = px ( lower ( height - del, minH ) )
+						originPosition['top'] = px ( upper( top + delY, top + height - minH ) )
+						originPosition['height']  = px ( lower ( height - delY, minH ) )
 					break
 					case 'bottom':
-						originStyle['height'] = px ( lower( height + del, minH ) )
+						originPosition['height'] = px ( lower( height + delY, minH ) )
+					break
+					case 'se':
+						let fontSize = parseInt(originStyle['fontSize'])
+						let factor = 0.8
+						if (delX < 0 || delY < 0)
+							factor = -0.8
+						originStyle['fontSize'] = px(lower(10, fontSize + factor * gouGu(delX, delY)))
 					break
 				}
 			}

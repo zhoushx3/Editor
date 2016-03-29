@@ -14,6 +14,18 @@ function geometricTemplate(c) {
 	}
 }
 
+function iconTemplate(c) {
+	return {
+		"type": "icon",
+		"className": c,
+		"style": {
+			"top": 0,
+			"left": "10px",
+			"fontSize": "30px"
+		}
+	}
+}
+
 
 // 由 Editor.vue 调用
 export default {
@@ -32,6 +44,10 @@ export default {
 					[ resumeJSON.json.contentNum ]: geometricTemplate(c)
 				})
 			break
+			case 'icon':
+				this.content = Object.assign({}, this.content, {
+					[ resumeJSON.json.contentNum ]: iconTemplate(c)
+				})
 		}
 	},
 	/*

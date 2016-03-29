@@ -38,20 +38,24 @@ export default class FlexEvent {
 				switch (type) {
 					case 'left':
 						self.target[1] = clientX
-						self.flexCB(key, delX, type)
+						self.flexCB(key, delX, 0, type)
 					break
 					case 'right':
 						self.target[1] = clientX
-						self.flexCB(key, delX, type)
+						self.flexCB(key, delX, 0, type)
 					break
 					case 'top':
 						self.target[2] = clientY
-						self.flexCB(key, delY, type)
+						self.flexCB(key, 0, delY, type)
 					break
 					case 'bottom':
 						self.target[2] = clientY
-						self.flexCB(key, delY, type)
+						self.flexCB(key, 0, delY, type)
 					break
+					case 'se':
+						self.target[1] = clientX
+						self.target[2] = clientY
+						self.flexCB(key, delX, delY, type)
 				}
 			}
 		})

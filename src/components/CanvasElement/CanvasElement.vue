@@ -33,6 +33,7 @@
 
 <script>
 	import Text from './Text.vue'
+	import Icon from './Icon.vue'
 	import Img from './Img.vue'
 	import Geometric from './Geometric.vue'
 
@@ -55,14 +56,17 @@
 			'text-component': Text,
 			'img-component': Img,
 			'geometric-component': Geometric,
+			'icon-component': Icon,
 		},
 		watch: {
 			scale: function(value) {
 
+			},
+			content: function(value) {
+				console.log(value)
 			}
 		},
 		ready: function() {
-
 		}
 	}
 </script>

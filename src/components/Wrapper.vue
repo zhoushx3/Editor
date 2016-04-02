@@ -1,20 +1,20 @@
 <template lang="jade">
 	.wrapper(:style="style")
-		.mask(@mousedown="drag")
-			template(v-if="type !== 'geometric'")
-				.leftToFlex.flexCircle(@mousedown="flex('left', $event)")
-				.rightToFlex.flexCircle(@mousedown="flex('right', $event)")
-				.topToFlex.flexCircle(@mousedown="flex('top', $event)")
-				.downToFlex.flexCircle(@mousedown="flex('bottom', $event)")
+		.mask(@mousedown="drag", :class="targeted")
+			.se-flex(@mousedown="flex('se', $event)" v-if="type === 'icon'")
 		slot
 
 </template>
 
+<!-- 			template(v-if="type !== 'geometric'")
+				.leftToFlex.flexCircle(@mousedown="flex('left', $event)")
+				.rightToFlex.flexCircle(@mousedown="flex('right', $event)")
+				.topToFlex.flexCircle(@mousedown="flex('top', $event)")
+				.bottomToFlex.flexCircle(@mousedown="flex('bottom', $event)") -->
 <style lang="less" scoped>
 	.wrapper {
 		position: absolute;
 		outline: none;
-		left: 0;
 		cursor: move;
 		font-size: 0; // 这个为了除去空格占的位置
 
@@ -26,11 +26,27 @@
 			bottom: 0;
 			z-index: 1;
 
-			&:hover {
+			&:hover, &.targeted {
 				border: 1px dashed #000;
 				.flexCircle {
 					display: block;
 				}
+				.se-flex {
+					display: block;
+				}
+			}
+
+			.se-flex {
+		    position: absolute;
+		    right: -3px;
+		    bottom: -3px;
+		    width: 12px;
+		    height: 12px;
+		    border: 3px solid #222;
+		    border-left-color: transparent;
+		    border-top-color: transparent;
+		    cursor: se-resize;
+		    display: none;
 			}
 
 			.flexCircle {
@@ -59,7 +75,7 @@
 			}
 
 			.topToFlex,
-			.downToFlex {
+			.bottomToFlex {
 				cursor: n-resize;
 				left: 50%;
 				margin-left: -5px;
@@ -69,7 +85,7 @@
 				top: -5px;
 			}
 
-			.downToFlex {
+			.bottomToFlex {
 				bottom: -5px;
 			}
 		}
@@ -78,13 +94,17 @@
 
 <script>
 	import { px } from '../helper/func.js'
-	import { SELECT_ELEMENT } from '../helper/DataEvent.js'
+	import ElementAction from '../Action2Store/ElementAction.js'
 
 	export default {
 		name: 'wrapper',
-		props: ['style', 'key', 'type'],
-		data() {
-			return {
+		props: ['element', 'key', 'selectId'],
+		computed: {
+			style() {
+				return Object.assign({}, this.element.position, this.element.style)
+			},
+			targeted() {
+				return this.selectId == this.key ? 'targeted' : ''
 			}
 		},
 		methods: {
@@ -93,7 +113,7 @@
 				event.preventDefault()
 				event.stopPropagation()
 				// 拖拽
-				this.$dispatch(SELECT_ELEMENT, this.key)
+				ElementAction.selectElement(this.key)
 				window.dragEvent.trigger('d_' + this.key, event.clientX, event.clientY)
 			},
 			flex: function(direction, event) {

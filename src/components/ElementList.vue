@@ -5,7 +5,7 @@
 				.hook {{ hook[$key] ? 'O' : '' }}
 				span {{ d.type === "text" ? d.text : d.alt }}
 		.add-element(@click="toggleShow") {{ show ? '收起' : '添加' }}
-		element-container(v-bind:class="animateClass")
+		//- element-container(v-bind:class="animateClass")
 </template>
 
 <style lang="less" scoped>
@@ -64,7 +64,7 @@
 
 
 <script>
-	import ElementContainer from './ElementContainer.vue'
+	// import ElementContainer from './ElementContainer.vue'
 
 	export default {
 		name: 'elementList',
@@ -99,7 +99,7 @@
 			}
 		},
 		components: {
-			'element-container': ElementContainer
+			// 'element-container': ElementContainer
 		},
 		ready() {
 

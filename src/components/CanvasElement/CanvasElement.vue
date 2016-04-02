@@ -1,32 +1,35 @@
 <template lang="jade">
 	#canvas
-		.center-canvas(:style="{ transform: 'scale(' + scale + ')' }")
+		.center-canvas(:style="style")
 			template(v-for="element in content")
 				component(:is="elementComponent($key)",
 									:key="$key",
+									:selectId="selectId",
 									:element="element")
 
 </template>
 
 <style lang="less" scoped>
+	@import '../../less/variable.less';
+
 	#canvas {
 		position: absolute;
 		top: 30px;
 		bottom: 0;
-		left: 300px;
+		left: 0;
 		right: 300px;
-		background-color: #aaa;
-		overflow: auto;
+		background-color: #fff;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
 
 		.center-canvas {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 210px;
-			height: 297px;
-			margin-left: -105px;
-			margin-top: -148.5px;
+			position: relative;
+			// max-width: @canvas-width;
+			margin-top: 30px;
+			margin-bottom: 30px;
 			background-color: #fff;
+			box-shadow: 0 0 40px #9A9A9A;
 		}
 	}
 </style>
@@ -36,16 +39,24 @@
 	import Icon from './Icon.vue'
 	import Img from './Img.vue'
 	import Geometric from './Geometric.vue'
+	import constants from '../../data/constants.js'
 
 	export default {
 		name: 'canvas-element',
-		props: ['scale', 'content'],
+		props: ['content', 'selectId'],
 		data() {
-			return {
-				_scale: 'scale(' + this.scale + ',' + this.scale + ')'
-			}
 		},
 		computed: {
+			style() {
+				let screenWidth = window.screen.availWidth
+				let width = screenWidth - 300 - 150
+				let height = width * constants.CANVAS_HEIGHT / constants.CANVAS_WIDTH
+				return {
+					'width': width + 'px',
+					'height': height + 'px',
+					'max-width': constants.CANVAS_WIDTH + 'px',
+				}
+			}
 		},
 		methods: {
 			elementComponent(key) {
@@ -59,14 +70,15 @@
 			'icon-component': Icon,
 		},
 		watch: {
-			scale: function(value) {
-
-			},
-			content: function(value) {
-				console.log(value)
-			}
 		},
 		ready: function() {
+      $('#canvas').niceScroll({
+        cursorcolor: '#d6d6d6',
+        railalign: 'right',
+        horizrailenabled: false,
+        cursoropacitymin:0,
+        autohidemode: false
+      })
 		}
 	}
 </script>

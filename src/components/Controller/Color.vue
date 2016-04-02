@@ -31,8 +31,9 @@
 	  methods: {
 	  	changeColor(event, color){
 	  		let newColor = color ? color.toString() : 'rgba(255,255,255,0)'
-	  		let type = ['icon', 'geomestric', 'background']
-	  		if (type.indexOf(this.element.type) === -1 )
+	  		let type = ['icon']
+	  		// 'geomestric', 'background'
+	  		if (type.indexOf(this.element.type) !== -1 )
 	  			this.element.style['color'] = newColor
 	  		else 
 	  			this.element.style['background-color'] = newColor
@@ -40,11 +41,13 @@
 	  },
 	  computed: {
 	  	color() {
-	  		let type = ['icon', 'geomestric', 'background']
-  			return type.indexOf(this.element.type) === -1 ?  this.element.style['color'] : this.element.style['background-color']
+	  		let type = ['icon']
+	  		// ['background', 'geomestry']
+  			return type.indexOf(this.element.type) !== -1 ?  this.element.style['color'] : this.element.style['background-color']
 	  	}
 	  },
 	  ready() {
+	  	console.log(this.color)
 	    this.spectrumObj = $(this.$el).find('input').spectrum({
 	      color: this.color,
 	      showInput: true,

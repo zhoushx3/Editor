@@ -1,16 +1,15 @@
 <template lang="jade">
 	.wrapper(:style="style")
 		.mask(@mousedown="drag", :class="targeted")
-			.se-flex(@mousedown="flex('se', $event)" v-if="type === 'icon'")
+			.se-flex(v-if="seType", @mousedown="flex('se', $event)" )
+			.w-flex.flex(v-if="weType", @mousedown="flex('w', $event)")
+			.e-flex.flex(v-if="weType", @mousedown="flex('e', $event)")
+			.n-flex.flex(v-if="nsType", @mousedown="flex('n', $event)")
+			.s-flex.flex(v-if="nsType", @mousedown="flex('s', $event)")
 		slot
 
 </template>
 
-<!-- 			template(v-if="type !== 'geometric'")
-				.leftToFlex.flexCircle(@mousedown="flex('left', $event)")
-				.rightToFlex.flexCircle(@mousedown="flex('right', $event)")
-				.topToFlex.flexCircle(@mousedown="flex('top', $event)")
-				.bottomToFlex.flexCircle(@mousedown="flex('bottom', $event)") -->
 <style lang="less" scoped>
 	.wrapper {
 		position: absolute;
@@ -28,7 +27,7 @@
 
 			&:hover, &.targeted {
 				border: 1px dashed #000;
-				.flexCircle {
+				.flex {
 					display: block;
 				}
 				.se-flex {
@@ -49,7 +48,7 @@
 		    display: none;
 			}
 
-			.flexCircle {
+			.flex {
 				width: 10px;
 				height: 10px;
 				position: absolute;
@@ -59,33 +58,33 @@
 				display: none;
 			}
 
-			.leftToFlex,
-			.rightToFlex {
+			.w-flex,
+			.e-flex {
 				cursor: e-resize;
 				top: 50%;
 				margin-top: -5px;
 			}
 
-			.leftToFlex {
+			.w-flex {
 				left: -5px;
 			}
 
-			.rightToFlex {
+			.e-flex {
 				right: -5px;
 			}
 
-			.topToFlex,
-			.bottomToFlex {
+			.n-flex,
+			.s-flex {
 				cursor: n-resize;
 				left: 50%;
 				margin-left: -5px;
 			}
 
-			.topToFlex {
+			.n-flex {
 				top: -5px;
 			}
 
-			.bottomToFlex {
+			.s-flex {
 				bottom: -5px;
 			}
 		}
@@ -110,9 +109,20 @@
 				return Object.assign({}, this.element.position, this.element.style)
 			},
 			targeted() {
-				console.log(this.selectid, this.key)
 				return this.selectid == this.key ? 'targeted' : ''
 			},
+			weType() {
+				let typeList = ['text', 'geometric', 'img']
+				return typeList.indexOf(this.type) !== -1
+			},
+			nsType() {
+				let typeList = ['geometric', 'img']
+				return typeList.indexOf(this.type) !== -1
+			},
+			seType() {
+				let typeList = ['icon']
+				return typeList.indexOf(this.type) !== -1
+			}
 		},
 		methods: {
 			drag: function(event) {

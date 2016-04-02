@@ -35,19 +35,19 @@ export default class FlexEvent {
 						key  = self.target[0]
 
 				switch (type) {
-					case 'left':
+					case 'w':
 						self.target[1] = clientX
 						self.callback(key, delX, 0, type)
 					break
-					case 'right':
+					case 'e':
 						self.target[1] = clientX
 						self.callback(key, delX, 0, type)
 					break
-					case 'top':
+					case 'n':
 						self.target[2] = clientY
 						self.callback(key, 0, delY, type)
 					break
-					case 'bottom':
+					case 's':
 						self.target[2] = clientY
 						self.callback(key, 0, delY, type)
 					break

@@ -1,5 +1,5 @@
 <template lang="jade">
-	wrapper(:element="element", :key="key", :selectId="selectId") 
+	wrapper(:element="element", :key="key", :selectid="selectid") 
 		p {{ element.text }}
 </template>
 
@@ -14,7 +14,7 @@
 
 	export default {
 		name: 'text-component',
-		props: ['key', 'element', 'selectId'],
+		props: ['key', 'element', 'selectid'],
 		data() {
 			return {
 			}

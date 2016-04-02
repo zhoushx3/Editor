@@ -5,14 +5,13 @@ import Listener from './Listener.js'
 */
 export default class FlexEvent {
 	/*
-		@ flexCB    -> mousemove回调的操作	
+		@ callback    -> mousemove回调的操作	
 		@ container -> 负责监听的容器，避免使用document
 		@ target    -> 保留 key clientX clientY 因为一次只有一个元素被拉伸 (一次只有一个元素被点击)
 							  -> 只要有target 就拉伸，而不需要管event.target是否是点击对应的元素
 		@ key       -> 以 f_ 开头的才是有拉伸功能的
 	*/
-	constructor(flexCB, container) {
-		this.flexCB = flexCB
+	constructor(container) {
 		this.container = container
 		this.target = []
 		this.init()
@@ -38,35 +37,36 @@ export default class FlexEvent {
 				switch (type) {
 					case 'left':
 						self.target[1] = clientX
-						self.flexCB(key, delX, 0, type)
+						self.callback(key, delX, 0, type)
 					break
 					case 'right':
 						self.target[1] = clientX
-						self.flexCB(key, delX, 0, type)
+						self.callback(key, delX, 0, type)
 					break
 					case 'top':
 						self.target[2] = clientY
-						self.flexCB(key, 0, delY, type)
+						self.callback(key, 0, delY, type)
 					break
 					case 'bottom':
 						self.target[2] = clientY
-						self.flexCB(key, 0, delY, type)
+						self.callback(key, 0, delY, type)
 					break
 					case 'se':
 						self.target[1] = clientX
 						self.target[2] = clientY
-						self.flexCB(key, delX, delY, type)
+						self.callback(key, delX, delY, type)
 				}
 			}
 		})
 	}
 
 	// 注册监听拉伸
-	register(key, clientX, clientY, type) {
+	flex(key, clientX, clientY, type, callback) {
 		// 过滤掉 DragEvent
-		if ( key.indexOf('f_') !== 0 ) {
-			return
-		}
+		// if ( key.indexOf('f_') !== 0 ) {
+		// 	return
+		// }
 		this.target = [key, clientX, clientY, type]
+		this.callback = callback
 	}
 }

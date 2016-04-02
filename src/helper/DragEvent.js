@@ -5,19 +5,17 @@ import Listener from './Listener.js'
 */
 export default class DragEvent {
 	/*
-		@ dragCB    -> mousemove回调的操作
+		@ callback    -> mousemove回调的操作
 		@ dragUpCB  -> mouseup 回调
 		@ container -> 负责监听的容器，避免使用document
 		@ target    -> 负责存储监听的元素，可多个，至少点击其中一个可以触发集体移动
 		@ clientXY    -> 存放点击时鼠标的位置
 	*/
-	constructor(dragCB, dragUpCB, container) {
-		this.dragCB = dragCB
-		this.dragUpCB = dragUpCB
+	constructor(container) {
 		this.container = container
 		this.target = []
 		this.clientXY = []
-		this.targetMouseDown = false
+		// this.targetMouseDown = false
 		this.init()
 	}
 
@@ -27,15 +25,15 @@ export default class DragEvent {
 		Listener(this.container, 'mouseup', (event)=>{
 			self.target.length = 0
 			self.clientXY.length = 0
-			self.targetMouseDown = false
+			// self.targetMouseDown = false
 
-			if ( !!self.target && self.dragUpCB) {
-				self.dragUpCB()
-			}
+			// if ( !!self.target && self.dragUpCB) {
+			// 	self.dragUpCB()
+			// }
 		})
 
 		Listener(this.container, 'mousemove', (event)=>{
-			if ( self.targetMouseDown ) {
+			if ( self.target.length ) {
 				let clientX = event.clientX,
 						clientY = event.clientY,
 						delX = clientX - self.clientXY[0],
@@ -44,7 +42,7 @@ export default class DragEvent {
 				self.clientXY = [clientX, clientY]
 
 				self.target.forEach( (ele)=>{
-					self.dragCB(ele, delX, delY)
+					self.callback(ele, delX, delY)
 				})
 			}
 		})
@@ -55,23 +53,30 @@ export default class DragEvent {
 		this.register(key, clientX, clientY)
 		this.targetMouseDown = true
 	}
-	// 注册监听拖拽的元素
-	register(key, clientX, clientY) {
-		// 过滤掉 FlexEvent
-		if ( key.indexOf('d_') !== 0) {
-			return
-		}
 
+	drag(key, clientX, clientY, callback) {
+		this.target = [key]
 		this.clientXY = [clientX, clientY]
-
-		if ( this.target.indexOf(key) === -1 ) {
-			this.target.push(key)
-		}
-
+		this.callback = callback
 	}
-	// 取消监听
-	unregister(key) {
-		let pos = this.target.indexOf(key)
-		this.target.splice(pos, 1)
-	}
+
+	// // 注册监听拖拽的元素
+	// register(key, clientX, clientY) {
+	// 	// 过滤掉 FlexEvent
+	// 	if ( key.indexOf('d_') !== 0) {
+	// 		return
+	// 	}
+
+	// 	this.clientXY = [clientX, clientY]
+
+	// 	if ( this.target.indexOf(key) === -1 ) {
+	// 		this.target.push(key)
+	// 	}
+
+	// }
+	// // 取消监听
+	// unregister(key) {
+	// 	let pos = this.target.indexOf(key)
+	// 	this.target.splice(pos, 1)
+	// }
 }

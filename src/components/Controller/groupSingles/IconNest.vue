@@ -64,7 +64,7 @@
 </style>
 <script>
 	import iconFont from '../../../data/iconFont.js'
-	import ElementAction from '../../../Action2Store/ElementAction.js'
+	import EditorAction from '../../../Action2Store/EditorAction.js'
 
 	export default {
 		name: 'icon-nest',
@@ -79,7 +79,7 @@
 		},
 		methods: {
 			selectIcon(icon) {
-				this.$dispatch(ADD_ELEMENT, 'icon', icon)
+				EditorAction.addElement('icon', icon)
 			},
 			returnTo() {
 				// 修改props 双向

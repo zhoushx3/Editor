@@ -1,12 +1,12 @@
 <template lang="jade">
 	.controller
-		.group
-			.group-single(@click="showPanel('single')")
-			.group-group(@click="showPanel('group')")
-			.group-page(@click="showPanel('page')")
+		component(v-if="!selectid", :is="currentPanel")
 
-		component(v-if="!selectId", :is="currentPanel")
-		//- template(v-if="!selectId")
+	.group
+		.group-single(@click="showPanel('single')")
+		.group-group(@click="showPanel('group')")
+		.group-page(@click="showPanel('page')")
+		//- template(v-if="!selectid")
 		//- 	h2 点击画布上的元素
 		//- 	//- template(v-else)
 		//- 	//- font(:element="element" v-if="showFontController")
@@ -25,45 +25,44 @@
 		width: 300px;
 		border-left: 1px solid #000;
 		overflow: hidden;
-		
-		.group {
-			position: absolute;
-			left: -50px;
-			top: 100px;
-			width: 50px;
-			height: 200px;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-around;
+	}
+	.group {
+		position: absolute;
+		right: 300px;
+		top: 130px;
+		width: 50px;
+		height: 200px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
 
-			.group-single,
-			.group-group,
-			.group-page {
-				position: relative;
-				width: 30px;
-				height: 30px;
-				line-height: 30px;
-				border-radius: 50%;
-				box-shadow: 0 0 5px #aaa;
-				text-align: center;
-				cursor: pointer;
+		.group-single,
+		.group-group,
+		.group-page {
+			position: relative;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			border-radius: 50%;
+			box-shadow: 0 0 5px #aaa;
+			text-align: center;
+			cursor: pointer;
 
-				&:hover:before {
-					position: absolute;
-					left: -50px;
-					font-size: 12px;
-					font-family: "Microsoft Yahei";
-				}
+			&:hover:before {
+				position: absolute;
+				left: -50px;
+				font-size: 12px;
+				font-family: "Microsoft Yahei";
 			}
-			.group-single:hover:before {
-				content: '基本元素';
-			}
-			.group-group:hover:before {
-				content: '组合模板';
-			}
-			.group-page:hover:before {
-				content: '页模板';
-			}
+		}
+		.group-single:hover:before {
+			content: '基本元素';
+		}
+		.group-group:hover:before {
+			content: '组合模板';
+		}
+		.group-page:hover:before {
+			content: '页模板';
 		}
 	}
 </style>
@@ -77,7 +76,7 @@
 
 	export default {
 		name: 'controller',
-		props: ['element', 'selectId'],
+		props: ['element', 'selectid'],
 		data() {
 			return {
 				currentPanel: 'group-' + 'single'
@@ -117,7 +116,7 @@
 			// 'flex': Flex
 		},
 		ready() {
-			console.log(this.selectId)
+			console.log(this.selectid)
 		}
 	}
 

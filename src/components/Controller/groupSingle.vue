@@ -64,14 +64,13 @@
 	import TextNest from './groupSingles/TextNest.vue'
 	import IconNest from './groupSingles/IconNest.vue'
 	import GeometricNest from './groupSingles/GeometricNest.vue'
+	import EditorAction from '../../Action2Store/EditorAction.js'
 
 	export default {
 		name: 'groupSingle',
-		// props: ['class'],
 		data() {
 			return {
 				selectNest: null,
-				// nestClass: "hidden"
 				nestClass: 'bounceInRight'
 			}
 		},
@@ -114,6 +113,10 @@
 				$(event.target).removeClass('pulse')
 			},
 			showDetail: function(type) {
+				if ( type === 'text') {
+					EditorAction.addElement('text')
+					return 
+				}
 				this.selectNest = type + '-nest',
 				this.nestClass = 'bounceInRight'
 			}

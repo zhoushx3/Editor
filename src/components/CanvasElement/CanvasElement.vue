@@ -4,7 +4,7 @@
 			template(v-for="element in content")
 				component(:is="elementComponent($key)",
 									:key="$key",
-									:selectId="selectId",
+									:selectid="selectid",
 									:element="element")
 
 </template>
@@ -43,7 +43,7 @@
 
 	export default {
 		name: 'canvas-element',
-		props: ['content', 'selectId'],
+		props: ['content', 'selectid'],
 		data() {
 		},
 		computed: {
@@ -72,6 +72,7 @@
 		watch: {
 		},
 		ready: function() {
+	console.log('this', this.selectid)
       $('#canvas').niceScroll({
         cursorcolor: '#d6d6d6',
         railalign: 'right',

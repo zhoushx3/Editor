@@ -14,7 +14,7 @@
 <script>
 	export default {
 		name: 'header',
-		// props: ['element', 'key', 'selectId'],
+		// props: ['element', 'key', 'selectid'],
 		computed: {
 		},
 		methods: {

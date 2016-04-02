@@ -1,13 +1,12 @@
 <template lang="jade">
-	.head
-		input( type="range", min="1" max="10" step="0.01" v-model="scale" )
-	element-list( :content="content",
+	header-element
+	//- element-list( :content="content",
 							   v-ref:elementlist )
 	canvas-element( :scale="scale",
 									:content="content",
+									:selectid="selectid",
 									v-ref:canvaselement)
-	controller(:content="content",
-						 :select-key="selectKey")
+	controller(:element="selectElement", :selectid="selectid")
 </template>
 
 <style lang="less" scoped>
@@ -39,16 +38,19 @@
 </style>
 
 <script>
+	import Header from './components/Header.vue'
 	import ElementList from './components/ElementList.vue'
 	import CanvasElement from './components/CanvasElement/CanvasElement.vue'
 	import Controller from './components/Controller/Controller.vue'
-	import resumeJSON from './helper/resumeJSON.js'
+	import Store from './Action2Store/Store.js'
+	import Event from './Action2Store/Event.js'
 	import DragEvent from './helper/DragEvent.js'
 	import FlexEvent from './helper/FlexEvent.js'
-	import dataEvent from './helper/DataEvent.js'
 	import { px, lower, upper, gouGu } from './helper/func.js'
 
 	import './less/common.less'
+
+	const JSON_DATA = 'JSON_DATA'
 
 	export default {
 		el: 'body',
@@ -56,85 +58,40 @@
 		name: 'editor',
 		data() {
 			return {
-				scale: 1,
 				content: {},
-				selectKey: null
+				contentNum: 1,
+				selectid: undefined,
+				selectElement: undefined
 			}
 		},
 
 		components: {
+			'header-element': Header,
 			'element-list': ElementList,
 			'canvas-element': CanvasElement,
-			'controller': Controller
+			'controller': Controller,
 		},
-		events: dataEvent,
 		methods: {
-			dragCallback(key, delX, delY) {
-				let k = key.replace('d_', '')
-				let originStyle = this.content[k]['style']
-				originStyle['left'] = parseInt(originStyle['left']) + delX + 'px'
-				originStyle['top'] = parseInt(originStyle['top']) + delY + 'px'
-			},
-
-			dragUpCallback() {
-				this.$refs.elementlist.hook = []
-			},
-			// 伸缩设置最小宽度、最小高度
-			flexCallback(key, delX, delY, direction) {
-				let minW = 10
-				let minH = 10
-				let k = key.replace('f_', '')
-
-				let originPosition = this.content[k]['position']
-				let originStyle = this.content[k]['style']
-
-				let left = parseInt(originPosition['left'])
-				let top = parseInt(originPosition['top'])
-				let width = parseInt(originStyle['width'])
-				let height = parseInt(originStyle['height'])
-
-				switch (direction) {
-					case 'left':
-						originPosition['left']  = px ( upper( left + del, left + width - minW ) )
-						originStyle['width'] = px ( lower( width - delX, minW ) )
-					break
-					case 'right':
-						originStyle['width'] = px ( lower( width + delX, minW ) )
-					break
-					case 'top':
-						originPosition['top'] = px ( upper( top + delY, top + height - minH ) )
-						originPosition['height']  = px ( lower ( height - delY, minH ) )
-					break
-					case 'bottom':
-						originPosition['height'] = px ( lower( height + delY, minH ) )
-					break
-					case 'se':
-						let fontSize = parseInt(originStyle['fontSize'])
-						let factor = 0.8
-						if (delX < 0 || delY < 0)
-							factor = -0.8
-						originStyle['fontSize'] = px(lower(10, fontSize + factor * gouGu(delX, delY)))
-					break
-				}
+			_getJson(json, selectid, selectElement) {
+				this.content = json.content
+				this.contentNum = json.contentNum
+				this.selectid = selectid
+				this.selectElement = selectElement
 			}
 
 		},
 		watch: {
-			selectKey: function(value) {
+			selectid: function(value) {
 				console.log(value)
 			}
 		},
 		ready() {
 			let vm = this
+			Event.addChangeListener(JSON_DATA, this._getJson)
+			Store.fetchJson()
 
-			resumeJSON.init(vm).then( (bool)=>{
-				if (bool) {
-					this.content = resumeJSON.getContent()
-				}
-			})
-
-			window.dragEvent = new DragEvent( vm.dragCallback.bind(vm), vm.dragUpCallback.bind(vm), document.getElementById('canvas') )
-			window.flexEvent = new FlexEvent( vm.flexCallback.bind(vm), document.getElementById('canvas'))
+			window.dragEvent = new DragEvent(document.getElementById('canvas'))
+			window.flexEvent = new FlexEvent(document.getElementById('canvas'))
 		}
 	}
 </script>

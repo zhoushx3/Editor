@@ -66,7 +66,7 @@
 
 <script>
 	import cssShape from '../../../data/cssShape.js'
-	import ElementAction from '../../../Action2Store/ElementAction.js'
+	import EditorAction from '../../../Action2Store/EditorAction.js'
 
 	export default {
 		name: 'geometric-nest',
@@ -87,7 +87,7 @@
 				$(event.target).removeClass('rubberBand')
 			},
 			selectShape(shape) {
-				this.$dispatch(ADD_ELEMENT, 'geometric', shape)
+				EditorAction.addElement('geometric', shape)
 			},
 			returnTo() {
 				// 修改props 双向

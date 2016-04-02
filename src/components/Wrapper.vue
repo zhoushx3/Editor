@@ -94,18 +94,25 @@
 
 <script>
 	import { px } from '../helper/func.js'
+	import EditorAction from '../Action2Store/EditorAction.js'
 	import ElementAction from '../Action2Store/ElementAction.js'
 
 	export default {
 		name: 'wrapper',
-		props: ['element', 'key', 'selectId'],
+		props: ['element', 'key', 'selectid'],
+		data() {
+			return {
+				type: this.element.type
+			}
+		},
 		computed: {
 			style() {
 				return Object.assign({}, this.element.position, this.element.style)
 			},
 			targeted() {
-				return this.selectId == this.key ? 'targeted' : ''
-			}
+				console.log(this.selectid, this.key)
+				return this.selectid == this.key ? 'targeted' : ''
+			},
 		},
 		methods: {
 			drag: function(event) {
@@ -113,14 +120,15 @@
 				event.preventDefault()
 				event.stopPropagation()
 				// 拖拽
-				ElementAction.selectElement(this.key)
-				window.dragEvent.trigger('d_' + this.key, event.clientX, event.clientY)
+				EditorAction.resetElementId(this.key)
+				ElementAction.drag(this.key, event.clientX, event.clientY)
 			},
 			flex: function(direction, event) {
 				event.preventDefault()
 				event.stopPropagation()
 				// 横向纵向伸缩 
-				window.flexEvent.register('f_' + this.key, event.clientX, event.clientY, direction)
+				EditorAction.resetElementId(this.key)
+				ElementAction.flex(this.key, event.clientX, event.clientY, direction)
 			}
 		}
 	}

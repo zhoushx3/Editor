@@ -1,5 +1,5 @@
 <template lang="jade">
-	wrapper(:element="element", :key="key", :selectId="selectId") 
+	wrapper(:element="element", :key="key", :selectid="selectid") 
 		div(:style="element.style", :class="['iconfont', element.className]")
 </template>
 
@@ -15,7 +15,7 @@
 
 	export default {
 		name: 'icon-component',
-		props: ['key', 'element', 'selectId'],
+		props: ['key', 'element', 'selectid'],
 		data() {
 			return {
 			}
@@ -23,6 +23,9 @@
 		computed: {
 		},
 		watch: {
+			selectid:function(newv) {
+				console.log('ddd', newv)
+			}
 		},
 		methods: {
 		},

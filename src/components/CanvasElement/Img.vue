@@ -1,5 +1,5 @@
 <template lang="jade">
-	wrapper(:element="element", :key="key", :selectId="selectId") 
+	wrapper(:element="element", :key="key", :selectid="selectid") 
 		img(:src="element.src", :alt="element.alt")
 </template>
 
@@ -15,7 +15,7 @@
 
 	export default {
 		name: 'img-component',
-		props: ['key', 'element', 'selectId'],
+		props: ['key', 'element', 'selectid'],
 		data() {
 			return {
 			}

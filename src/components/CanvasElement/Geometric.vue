@@ -1,5 +1,5 @@
 <template lang="jade">
-	wrapper(:style="element.style", :key="key", :type="element.type")
+	wrapper(:element="element", :key="key", :selectid="selectid") 
 		.shapeWrapper
 			div(:class="element.className")
 </template>
@@ -16,7 +16,7 @@
 
 	export default {
 		name: 'geometric-component',
-		props: ['key', 'element'],
+		props: ['key', 'element', 'selectid'],
 		data() {
 			return {
 			}

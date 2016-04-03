@@ -92,7 +92,6 @@
 </style>
 
 <script>
-	import { px } from '../helper/func.js'
 	import EditorAction from '../Action2Store/EditorAction.js'
 	import ElementAction from '../Action2Store/ElementAction.js'
 
@@ -112,25 +111,27 @@
 				return this.selectid == this.key ? 'targeted' : ''
 			},
 			weType() {
-				let typeList = ['text', 'geometric', 'img']
+				let typeList = ['text', 'img']
 				return typeList.indexOf(this.type) !== -1
 			},
 			nsType() {
-				let typeList = ['geometric', 'img']
+				let typeList = ['img']
 				return typeList.indexOf(this.type) !== -1
 			},
 			seType() {
-				let typeList = ['icon']
+				let typeList = ['icon', 'geometric']
 				return typeList.indexOf(this.type) !== -1
 			}
 		},
 		methods: {
 			drag: function(event) {
+				EditorAction.resetElementId(this.key)
+				if ( this.type === 'background')
+					return 
 				// 此处是为了禁掉浏览器默认事件，并且禁止节点传播，下同
 				event.preventDefault()
 				event.stopPropagation()
 				// 拖拽
-				EditorAction.resetElementId(this.key)
 				ElementAction.drag(this.key, event.clientX, event.clientY)
 			},
 			flex: function(direction, event) {

@@ -31,42 +31,42 @@ export default class FlexEvent {
 						clientY = event.clientY,
 						delX = clientX - self.target[1],
 						delY = clientY - self.target[2],
-						type = self.target[3],
+						direction = self.target[3],
 						key  = self.target[0]
 
-				switch (type) {
+				switch (direction) {
 					case 'w':
 						self.target[1] = clientX
-						self.callback(key, delX, 0, type)
+						self.callback(key, delX, 0, direction)
 					break
 					case 'e':
 						self.target[1] = clientX
-						self.callback(key, delX, 0, type)
+						self.callback(key, delX, 0, direction)
 					break
 					case 'n':
 						self.target[2] = clientY
-						self.callback(key, 0, delY, type)
+						self.callback(key, 0, delY, direction)
 					break
 					case 's':
 						self.target[2] = clientY
-						self.callback(key, 0, delY, type)
+						self.callback(key, 0, delY, direction)
 					break
 					case 'se':
 						self.target[1] = clientX
 						self.target[2] = clientY
-						self.callback(key, delX, delY, type)
+						self.callback(key, delX, delY, direction)
 				}
 			}
 		})
 	}
 
 	// 注册监听拉伸
-	flex(key, clientX, clientY, type, callback) {
+	flex(key, clientX, clientY, direction, callback) {
 		// 过滤掉 DragEvent
 		// if ( key.indexOf('f_') !== 0 ) {
 		// 	return
 		// }
-		this.target = [key, clientX, clientY, type]
+		this.target = [key, clientX, clientY, direction]
 		this.callback = callback
 	}
 }

@@ -39,13 +39,12 @@
 	import Icon from './Icon.vue'
 	import Img from './Img.vue'
 	import Geometric from './Geometric.vue'
+	import Background from './Background.vue'
 	import constants from '../../data/constants.js'
 
 	export default {
 		name: 'canvas-element',
 		props: ['content', 'selectid'],
-		data() {
-		},
 		computed: {
 			style() {
 				let screenWidth = window.screen.availWidth
@@ -68,11 +67,11 @@
 			'img-component': Img,
 			'geometric-component': Geometric,
 			'icon-component': Icon,
+			'background-component': Background
 		},
 		watch: {
 		},
 		ready: function() {
-	console.log('this', this.selectid)
       $('#canvas').niceScroll({
         cursorcolor: '#d6d6d6',
         railalign: 'right',

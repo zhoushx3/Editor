@@ -15,8 +15,29 @@ a {
 
 body {
 	font-family: 'Microsoft Yahei';
-	background-color: #aaa;
 }
+
+input[type="number"], 
+input[type="text"] {
+	background-color: #fff;
+	border-radius: 2px;
+	border: 1px solid #ececec;
+	margin-left: 3px;
+	text-align: center;
+}
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+  -webkit-appearance: none !important;
+  margin: 0; 
+}
+
+input[type="number"] {
+  -moz-appearance:textfield;
+}
+
+
 
 @font-face {
 	font-family: 'iconfont';

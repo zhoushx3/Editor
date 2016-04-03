@@ -1,5 +1,17 @@
 var fakeData = {
   "content": {
+    "0": {
+      "type": "background",
+      "position": {
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "bottom": 0
+      },
+      "style": {
+        "background-color": "#fff"
+      }
+    },
     "1": {
       "type": "text",
       "text": "奋斗史就是发的刻录机",
@@ -41,10 +53,22 @@ var fakeData = {
       "style": {
         "fontSize": "30px"
       }
+    },
+    "4": {
+      "type": "geometric",
+      "className": "g-moon",
+      "position": {
+        "left": "200px",
+        "top": "200px"
+      },
+      "style": {
+
+      }
     }
   },
-  "contentNum": 3
+  "contentNum": 5
 }
+// key 暂时不用"0"
 
 export default fakeData
 

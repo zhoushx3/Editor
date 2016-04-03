@@ -1,19 +1,17 @@
 <template lang="jade">
 	.controller
-		component(v-if="!selectid", :is="currentPanel")
-
+		component(v-if="selectid === undefined", :is="currentPanel")
+		template(v-else)
+			//- color(v-if="showColorController", :element="element")
+			//- flex(v-if="showFlexController", :element="element" )
+			font(v-if="showFontController", :element="element" )
+			position(v-if="showPositionController", :element="element")
+			size(:element="element")
+			other(:element="element")
 	.group
 		.group-single(@click="showPanel('single')")
 		.group-group(@click="showPanel('group')")
 		.group-page(@click="showPanel('page')")
-		//- template(v-if="!selectid")
-		//- 	h2 点击画布上的元素
-		//- 	//- template(v-else)
-		//- 	//- font(:element="element" v-if="showFontController")
-		//- 	//- color(:element="element" v-if="showColorController")
-		//- 	//- scale(:element="element" v-if="showScaleController")
-		//- 	//- flex(:element="element" v-if="showFlexController")
-
 </template>
 
 <style lang="less">
@@ -35,6 +33,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
+		z-index: 999;
 
 		.group-single,
 		.group-group,
@@ -69,9 +68,14 @@
 
 
 <script>
-	import groupSingle from './groupSingle.vue'
-	import groupGroup from './groupGroup.vue'
+	import Other from './elementController/Other.vue'
+	import Font from './elementController/Font.vue'
+	import Color from './elementController/Color.vue'
+	import Size from './elementController/Size.vue'
+	import Position from './elementController/Position.vue'
 	import groupPage from './groupPage.vue'
+	import groupGroup from './groupGroup.vue'
+	import groupSingle from './groupSingle.vue'
 	import EditorAction from '../../Action2Store/EditorAction.js'
 
 	export default {
@@ -79,25 +83,28 @@
 		props: ['element', 'selectid'],
 		data() {
 			return {
-				currentPanel: 'group-' + 'single'
+				currentPanel: 'group-' + 'single',
 			}
 		},
 		computed: {
+			type() {
+				return this.element['type']
+			},
 			showColorController() {
 				let type = ['icon', 'text', 'geometric', 'background']
-				return type.indexOf(this.element['type']) !== -1
+				return type.indexOf(this.type) !== -1
 			},
 			showFontController() {
 				let type = ['text']
-				return type.indexOf(this.element['type']) !== -1
-			},
-			showScaleController() {
-				let type = ['geometric', 'icon']
-				return type.indexOf(this.element['type']) !== -1
+				return type.indexOf(this.type) !== -1
 			},
 			showFlexController() {
 				let type = ['text', 'img']
-				return type.indexOf(this.element['type']) !== -1
+				return type.indexOf(this.type) !== -1
+			},
+			showPositionController() {
+				let type = ['icon', 'text', 'geometric', 'img']
+				return type.indexOf(this.type) !== -1
 			}
 		},
 		methods: {
@@ -106,14 +113,17 @@
 				this.currentPanel = 'group-' + type
 			}
 		},
+		watch: {
+		},
 		components: {
 			'group-single': groupSingle,
 			'group-group': groupGroup,
 			'group-page': groupPage,
-			// 'font': Font,
-			// 'color': Color,
-			// 'scale': Scale,
-			// 'flex': Flex
+			'font': Font,
+			'color': Color,
+			'size': Size,
+			'other': Other,
+			'position': Position
 		},
 		ready() {
 			console.log(this.selectid)

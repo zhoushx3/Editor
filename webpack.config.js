@@ -1,5 +1,5 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-
+	
 module.exports = {
 	entry: {
 		main: './src/index.js'
@@ -7,12 +7,11 @@ module.exports = {
 	output: {
 		path: 'build',
 		filename: '[hash].bundle.js',
-		publicPath: 'build', //tells Webpack where to find built asset
+		publicPath: 'build/', //tells Webpack where to find built asset
 	},
-	external: {
-		'$' : 'jquery'
+	externals: {
+		'jquery' : 'jQuery'
 	},
-	debug: true,
 	module: {
 		loaders: [{
 			test: /\.vue/,
@@ -37,6 +36,21 @@ module.exports = {
 		}, {
 			test: /\.html/,
 			loader: 'html-loader'
+		}, {
+			test: /\.svg/,
+			loader: 'raw-loader'
+		}, {
+			test: /\.woff$/,
+			loader: "url-loader?limit=10000&mimetype=application/font-woff"
+		}, {
+			test: /\.ttf$/,
+			loader: "url-loader?limit=10000&mimetype=application/octet-stream"
+		}, {
+			test: /\.eot$/,
+			loader: "file-loader"
+		}, {
+			test: /\.svg$/,
+			loader: "url-loader?limit=10000&mimetype=image/svg+xml" 
 		}],
 		exclude: /\*.md/
 	},

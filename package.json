@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/zhoushx3/Editor#readme",
   "dependencies": {
-    "jquery": "^2.2.1",
     "vue": "^1.0.16",
     "webpack": "^1.12.14"
   },

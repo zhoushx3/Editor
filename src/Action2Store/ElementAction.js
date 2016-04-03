@@ -92,6 +92,10 @@ class ElementAction {
 			case 'left':
 			case 'top':
 				ele.position[property] = ( value || 0 ) + 'px'
+				break
+			case 'zIndex':
+				ele.style['zIndex'] = value
+				break
 
 		}
 		Store.setElement(ele) // 重点是为了让 store 通知更新 View 

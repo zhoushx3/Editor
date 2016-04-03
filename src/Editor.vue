@@ -80,11 +80,7 @@
 			}
 
 		},
-		watch: {
-			selectid: function(value) {
-				console.log(value)
-			}
-		},
+		watch: {},
 		ready() {
 			let vm = this
 			Event.addChangeListener(JSON_DATA, this._getJson)

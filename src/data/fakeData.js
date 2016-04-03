@@ -9,7 +9,8 @@ var fakeData = {
         "bottom": 0
       },
       "style": {
-        "background-color": "#fff"
+        "background-color": "#fff",
+        "zIndex": 0
       }
     },
     "1": {
@@ -25,7 +26,8 @@ var fakeData = {
         "fontSize": "10px",
         "fontWeight": 200,
         "lineHeight": "10px",
-        "color": "#aaa"
+        "color": "#aaa",
+        "zIndex": 1
       }
     },
     "2": {
@@ -37,8 +39,8 @@ var fakeData = {
       "style": {
         "width": "100px",
         "height": "100px",
-        "transform": "none",
-        "opacity": 1
+        "opacity": 1,
+        "zIndex": 2
       },
       "src": "build/node.png",
       "alt": "图一"
@@ -51,7 +53,8 @@ var fakeData = {
         "top": "100px"
       },
       "style": {
-        "fontSize": "30px"
+        "fontSize": "30px",
+        "zIndex": 3
       }
     },
     "4": {
@@ -62,7 +65,7 @@ var fakeData = {
         "top": "200px"
       },
       "style": {
-
+        "zIndex": 4
       }
     }
   },

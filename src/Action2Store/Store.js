@@ -34,6 +34,7 @@ class Store {
 	}
 	// 修改当前选中的 element 
 	setElement(newElement) {
+		console.log(newElement)
 		this.json.content[this.selectid] = newElement
 		this.selectElement = newElement
 		this.fetchJson()
@@ -43,6 +44,7 @@ class Store {
 		// 这样赋值才能让 Vue 将其转为响应的
 		// 这里不能使用Store.content来操作，否则json.content还是保持原来的(指针)
 		let contentNum = ( this.json.contentNum += 1 )
+		newElement['style']['z-index'] = contentNum
 
 		this.json.content = Object.assign({}, this.json.content, {
 			[ contentNum ]: newElement

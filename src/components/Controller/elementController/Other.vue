@@ -1,69 +1,75 @@
 <template lang="jade">
-	.color-picker
-		h2 更换颜色
-		input(type='text')
+	.container
+		.flex-box.percentage
+			percentage(type="opacity", :value="opacity")
+		.flex-box.percentage(v-if="type !== 'background'")
+			percentage(type="rotate", :value="rotate")
 </template>
 
-<style lang="less">
-	@import '../../../less/spectrum.less';
+<style lang="less" scoped>
+	@import '../../../less/variable.less';
 
-	.color-picker {
+	.container {
+		background-color: @controller-background-color;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: flex-start;
+		flex-wrap: wrap;
 		width: 100%;
-		height: 20%;
-		input {
-			cursor: pointer;
-		}
-		.sp-replacer.sp-light .sp-dd {
-			display: none;
-		}
-	}
+		padding: 10px;
+		box-sizing: border-box;
+		border-bottom: 1px solid #d6d6d6;
 
-	.color-picker-container {
+		.flex-box.percentage {
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+			padding: 15px 0;
+
+			label {
+				width: 30%;
+				font-size: 13px;
+				text-align: left;
+			}
+			input {
+				width: 60%;
+			}
+		}
 	}
 </style>
 
-<script>
-	export default {
-	  name: 'flex-controller',
-	  props: ['element'],
-	  methods: {
-	  	changeColor(event, color){
-	  		let newColor = color ? color.toString() : 'rgba(255,255,255,0)'
-	  		let type = ['icon', 'geomestric', 'background']
-	  		if (type.indexOf(this.element.type) === -1 )
-	  			this.element.style['color'] = newColor
-	  		else 
-	  			this.element.style['background-color'] = newColor
-	  	}
-	  },
-	  computed: {
-	  	color() {
-	  		let type = ['icon', 'geomestric', 'background']
-  			return type.indexOf(this.element.type) === -1 ?  this.element.style['color'] : this.element.style['background-color']
-	  	}
-	  },
-	  ready() {
-	    this.spectrumObj = $(this.$el).find('input').spectrum({
-	      color: this.color,
-	      showInput: true,
-	      showAlpha: true,
-	      allowEmpty: true,
-	      showPalette: false,
-	      containerClassName: 'color-picker-container',
-	      preferredFormat: 'hex',
-	      showButtons: false,
-	      clickoutFiresChange: true,
-	    })
-	    $(this.$el).find('input').on('dragstart.spectrum', this.changeColor)
-	    $(this.$el).find('input').on('dragstop.spectrum', this.changeColor)
-	    $(this.$el).find('input').on('change.spectrum', this.changeColor)
-	    $(this.$el).find('input').on('move.spectrum', this.changeColor)
 
-	    // $('.color-picker-container').on('keydown', e => e.stopPropagation())
-	    // $('.color-picker-container').on('keyup', e => e.stopPropagation())
-	  },
-	  destroyed() {
-	    this.spectrumObj.spectrum("destroy");
-	  }
+<script>
+	import ElementAction from '../../../Action2Store/ElementAction.js'
+	import Percentage from './Percentage.vue'
+
+	export default {
+		name: 'other-controller',
+		props: ['element'],
+		computed: {
+			opacity() {
+				// 小数来着，不能ParseInt
+				let value = this.element.style.opacity
+				return value !== undefined ? Math.floor(Number(value)*100) : 100
+			},
+			rotate() {
+				let value = this.element.style.transform
+				console.log(value)
+				return value !== undefined ? parseInt(value.replace(/[rotate()deg]/ig, '')) : 0
+			},
+			type() {
+				return this.element.type
+			}
+		},
+		methods: {
+			setStyle(property, event) {
+				ElementAction.setStyle(property, event.target.value)
+			}
+		},
+		components: {
+			'percentage': Percentage
+		}
 	}
+
 </script>

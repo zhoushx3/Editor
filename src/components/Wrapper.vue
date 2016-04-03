@@ -1,5 +1,5 @@
 <template lang="jade">
-	.wrapper(:style="style")
+	.wrapper(:style="style", :keyId="key")
 		.mask(@mousedown="drag", :class="targeted")
 			.se-flex(v-if="seType", @mousedown="flex('se', $event)" )
 			.w-flex.flex(v-if="weType", @mousedown="flex('w', $event)")
@@ -23,7 +23,6 @@
 			left: 0;
 			right: 0;
 			bottom: 0;
-			z-index: 1;
 
 			&:hover, &.targeted {
 				border: 1px dashed #000;
@@ -54,7 +53,6 @@
 				position: absolute;
 				background-color: #aaa;
 				border-radius: 50%;
-				z-index: 2;
 				display: none;
 			}
 
@@ -100,12 +98,18 @@
 		props: ['element', 'key', 'selectid'],
 		data() {
 			return {
-				type: this.element.type
+				type: this.element.type,
+				// zIndex: parseInt(this.element.style.zIndex || 0)
+				// 这个写法会使zIndex永远不变，应该是因为没有和DOM双向绑定
 			}
 		},
 		computed: {
 			style() {
 				return Object.assign({}, this.element.position, this.element.style)
+			},
+			zIndex() {
+				// 这个写法会监听到改变，归功于style / element变化
+				return parseInt(this.style.zIndex || 0)
 			},
 			targeted() {
 				return this.selectid == this.key ? 'targeted' : ''
@@ -140,7 +144,71 @@
 				// 横向纵向伸缩 
 				EditorAction.resetElementId(this.key)
 				ElementAction.flex(this.key, event.clientX, event.clientY, direction)
+			},
+			moveZIndex(n) {
+				EditorAction.resetElementId(this.key)
+				switch(n) {
+					case -1:
+						ElementAction.setStyle('zIndex', this.zIndex-1)
+						break
+					case 1:
+					console.log(this.zIndex)
+						ElementAction.setStyle('zIndex', this.zIndex+1)
+						break
+					case 0:
+						ElementAction.setStyle('zIndex', 0)
+						break
+				}
 			}
+		},
+		ready() {
+	    $.contextMenu({
+	      selector: `[keyId=${this.key}]`,
+	      animation: {duration: 200, show: 'slideDown', hide: 'slideUp'},
+	      className: 'contextmenu-custom contextmenu-custom__highlight',
+	      zIndex: ()=>{
+	      	return this.zIndex+1
+	      },
+	      items: {
+	        copy: {
+	          name: '复制',
+	          disabled: ()=>{
+	          	return this.zIndex === 0
+	          },
+	          callback: (key, opt) => {
+	            // let copiedElement = vm.state.getIn(['editorStatus', 'copiedElement'])
+	            // if (copiedElement) {
+	            //   vm.actions.addElement(copiedElement.toJS(), vm.pageid, vm.slugid)
+	            // }
+	          }
+	        },
+	        moveUp: {
+	        	name: '上移一层',
+	        	callback:(key, opt)=>{
+	        		this.moveZIndex(1)
+	        	}
+	        },
+	        moveDown: {
+	        	name: '下移一层',
+	        	disabled: ()=>{
+	      			return this.zIndex === 0
+	        	},
+	        	callback:()=>{
+	        		this.moveZIndex(-1)
+	        	}
+	        },
+	        moveBottom: {
+	        	name: '下移至底层',
+	        	callback:()=>{
+	        		this.moveZIndex(0)
+	        	}
+	        }
+	      },
+	      trigger: 'right',
+	      reposition: true,
+	      autoHide: false,
+	      zIndex: 0
+	    })
 		}
 	}
 </script>

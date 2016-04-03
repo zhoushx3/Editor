@@ -53,7 +53,6 @@
 						max = 360
 						break
 				}
-				console.log(value)
 				return {
 					name: name,
 					min: min, 

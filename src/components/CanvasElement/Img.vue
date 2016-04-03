@@ -30,8 +30,6 @@
 			'wrapper': Wrapper,
 		},
 		ready: function() {
-			console.log('img is ready')
-
 		}
 	}
 </script>

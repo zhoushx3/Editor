@@ -126,7 +126,6 @@
 			'position': Position
 		},
 		ready() {
-			console.log(this.selectid)
 		}
 	}
 

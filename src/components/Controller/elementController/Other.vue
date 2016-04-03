@@ -55,7 +55,6 @@
 			},
 			rotate() {
 				let value = this.element.style.transform
-				console.log(value)
 				return value !== undefined ? parseInt(value.replace(/[rotate()deg]/ig, '')) : 0
 			},
 			type() {

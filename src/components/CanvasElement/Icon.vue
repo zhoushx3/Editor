@@ -23,9 +23,6 @@
 		computed: {
 		},
 		watch: {
-			selectid:function(newv) {
-				console.log('ddd', newv)
-			}
 		},
 		methods: {
 		},
@@ -33,8 +30,6 @@
 			'wrapper': Wrapper,
 		},
 		ready: function() {
-			console.log('icon is ready')
-
 		}
 	}
 </script>

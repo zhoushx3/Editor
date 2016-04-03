@@ -23,7 +23,6 @@
 			'wrapper': Wrapper,
 		},
 		ready: function() {
-			console.log('backgournd is ready')
 		}
 	}
 </script>

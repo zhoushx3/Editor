@@ -31,8 +31,6 @@
 			'wrapper': Wrapper,
 		},
 		ready: function() {
-			console.log('geometric is ready')
-
 		}
 	}
 </script>

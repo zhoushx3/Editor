@@ -23,7 +23,7 @@
 </style>
 
 <script>
-	// import 'spectrum-colorpicker' 引入没作用。。。
+	import 'spectrum-colorpicker' //引入没作用。。。
 
 	export default {
 	  name: 'color-controller',

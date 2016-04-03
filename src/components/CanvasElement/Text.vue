@@ -27,7 +27,6 @@
 			'wrapper': Wrapper,
 		},
 		ready: function() {
-			console.log('text is ready')
 		}
 	}
 </script>

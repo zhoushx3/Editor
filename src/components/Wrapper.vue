@@ -152,7 +152,6 @@
 						ElementAction.setStyle('zIndex', this.zIndex-1)
 						break
 					case 1:
-					console.log(this.zIndex)
 						ElementAction.setStyle('zIndex', this.zIndex+1)
 						break
 					case 0:
@@ -162,53 +161,69 @@
 			}
 		},
 		ready() {
-	    $.contextMenu({
-	      selector: `[keyId=${this.key}]`,
-	      animation: {duration: 200, show: 'slideDown', hide: 'slideUp'},
-	      className: 'contextmenu-custom contextmenu-custom__highlight',
-	      zIndex: ()=>{
-	      	return this.zIndex+1
-	      },
-	      items: {
-	        copy: {
-	          name: '复制',
-	          disabled: ()=>{
-	          	return this.zIndex === 0
-	          },
-	          callback: (key, opt) => {
-	            // let copiedElement = vm.state.getIn(['editorStatus', 'copiedElement'])
-	            // if (copiedElement) {
-	            //   vm.actions.addElement(copiedElement.toJS(), vm.pageid, vm.slugid)
-	            // }
-	          }
-	        },
-	        moveUp: {
-	        	name: '上移一层',
-	        	callback:(key, opt)=>{
-	        		this.moveZIndex(1)
-	        	}
-	        },
-	        moveDown: {
-	        	name: '下移一层',
-	        	disabled: ()=>{
-	      			return this.zIndex === 0
-	        	},
-	        	callback:()=>{
-	        		this.moveZIndex(-1)
-	        	}
-	        },
-	        moveBottom: {
-	        	name: '下移至底层',
-	        	callback:()=>{
-	        		this.moveZIndex(0)
-	        	}
-	        }
-	      },
-	      trigger: 'right',
-	      reposition: true,
-	      autoHide: false,
-	      zIndex: 0
-	    })
+			if (this.type === 'background') {
+				$.contextMenu({
+		      selector: `[keyId=${this.key}]`,
+		      animation: {duration: 200, show: 'slideDown', hide: 'slideUp'},
+		      className: 'contextmenu-custom contextmenu-custom__highlight',
+					zIndex: ()=>{
+						return 999
+					},
+					items: {
+						paste: {
+							name: '粘贴',
+							disabled:()=>{
+								return EditorAction.copyElement == null
+							},
+							callback: (key, opt) => {
+								EditorAction.paste()
+							}
+						}
+					}
+				})
+			} else {
+		    $.contextMenu({
+		      selector: `[keyId=${this.key}]`,
+		      animation: {duration: 200, show: 'slideDown', hide: 'slideUp'},
+		      className: 'contextmenu-custom contextmenu-custom__highlight',
+		      zIndex: ()=>{
+						return 999
+					},
+		      items: {
+		        copy: {
+		          name: '复制',
+		          callback: (key, opt) => {
+		          	EditorAction.preCopy(this.element)
+		          }
+		        },
+		        moveUp: {
+		        	name: '上移一层',
+		        	callback:(key, opt)=>{
+		        		this.moveZIndex(1)
+		        	}
+		        },
+		        moveDown: {
+		        	name: '下移一层',
+		        	disabled: ()=>{
+		      			return this.zIndex === 0
+		        	},
+		        	callback:()=>{
+		        		this.moveZIndex(-1)
+		        	}
+		        },
+		        moveBottom: {
+		        	name: '下移至底层',
+		        	callback:()=>{
+		        		this.moveZIndex(0)
+		        	}
+		        }
+		      },
+		      trigger: 'right',
+		      reposition: true,
+		      autoHide: false,
+		      zIndex: 0
+		    })
+			}
 		}
 	}
 </script>

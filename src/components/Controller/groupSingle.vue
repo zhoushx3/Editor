@@ -60,8 +60,6 @@
 
 
 <script>
-	import PicNest from './groupSingles/PicNest.vue'
-	import TextNest from './groupSingles/TextNest.vue'
 	import IconNest from './groupSingles/IconNest.vue'
 	import GeometricNest from './groupSingles/GeometricNest.vue'
 	import EditorAction from '../../Action2Store/EditorAction.js'
@@ -117,17 +115,22 @@
 					EditorAction.addElement('text')
 					return 
 				}
+				if ( type === 'pic') {
+
+					return 
+				}
 				this.selectNest = type + '-nest',
 				this.nestClass = 'bounceInRight'
 			}
 		},
 		components: {
 			'icon-nest': IconNest,
-			'pic-nest': PicNest,
-			'text-nest': TextNest,
 			'geometric-nest': GeometricNest
 		},
 		ready() {
+			this.$on('closeNest', ()=>{
+				this.nestClass = 'bounceOutLeft'
+			})
 		}
 	}
 

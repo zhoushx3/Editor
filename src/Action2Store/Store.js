@@ -34,7 +34,6 @@ class Store {
 	}
 	// 修改当前选中的 element 
 	setElement(newElement) {
-		console.log(newElement)
 		this.json.content[this.selectid] = newElement
 		this.selectElement = newElement
 		this.fetchJson()

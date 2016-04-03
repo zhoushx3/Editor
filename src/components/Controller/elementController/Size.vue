@@ -1,42 +1,16 @@
 <template lang="jade">
-	.container
-		template(v-for="value in values" track-by="key")
-			.flex-box
-				label {{ value.cn }}
-				input(type="number", :value="value.value", @input="setStyle(value.key, $event)")
+	template(v-for="value in values" track-by="key")
+		.flex-box.size(:style="sizeWidth")
+			label {{ value.cn }}
+			input(type="number", :value="value.value", @input="setStyle(value.key, $event)")
 				
 </template>
 
 <style lang="less" scoped>
 	@import '../../../less/variable.less';
 
-	.container {
-		background-color: @controller-background-color;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		align-content: flex-start;
-		flex-wrap: wrap;
-		width: 100%;
-		padding: 10px;
-		box-sizing: border-box;
-		border-bottom: 1px solid #d6d6d6;
-
-		.flex-box {
-			width: 50%;
-			display: flex;
-			justify-content: space-around;
-			padding: 15px 0;
-
-			label {
-				width: 30%;
-				font-size: 13px;
-				text-align: left;
-			}
-			input {
-				width: 60%;
-			}
-		}
+	.flex-box.size {
+		width: 50%;
 	}
 </style>
 
@@ -52,6 +26,12 @@
 			}
 		},
 		computed: {
+			sizeWidth() {
+				let l = this.values.length
+				if (l === 2) return {width: '50%'}
+				else if (l === 1) return { width: '100%'}
+				else if (l === 0) return { display: 'none'}
+			},
 			type() {
 				return this.element.type
 			},

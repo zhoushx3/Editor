@@ -1,44 +1,18 @@
 <template lang="jade">
-	.container
-		.flex-box
-			label 横坐标 
-			input(type="number", :value="left", @input="setStyle('left', $event)")
-		.flex-box
-			label 纵坐标 
-			input(type="number", :value="top", @input="setStyle('top', $event)")
+	.flex-box.position
+		label 横坐标 
+		input(type="number", :value="left", @input="setStyle('left', $event)")
+	.flex-box.position
+		label 纵坐标 
+		input(type="number", :value="top", @input="setStyle('top', $event)")
 				
 </template>
 
 <style lang="less" scoped>
 	@import '../../../less/variable.less';
 
-	.container {
-		background-color: @controller-background-color;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		align-content: flex-start;
-		flex-wrap: wrap;
-		width: 100%;
-		padding: 10px;
-		box-sizing: border-box;
-		border-bottom: 1px solid #d6d6d6;
-
-		.flex-box {
-			width: 50%;
-			display: flex;
-			justify-content: space-around;
-			padding: 15px 0;
-
-			label {
-				width: 30%;
-				font-size: 13px;
-				text-align: left;
-			}
-			input {
-				width: 60%;
-			}
-		}
+	.flex-box.position {
+		width: 50%;
 	}
 </style>
 

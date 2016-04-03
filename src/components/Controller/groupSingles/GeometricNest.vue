@@ -42,7 +42,7 @@
 		    align-items: center;
 		    cursor: pointer;
 		    border-radius: 50%;
-		    margin: 10px 0;
+		    margin: 10px 5px;
 	  	}
   	}
   

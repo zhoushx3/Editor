@@ -1,8 +1,10 @@
 import Store from './Store.js'
-
+import Func from '../helper/func.js'
 // 由 Editor.vue 调用
 class EditorAction {
-	construtor() {}
+	construtor() {
+		copyElement = null
+	}
 	/*
 		添加画布元素
 		@type -> geometric / icon / img / text
@@ -28,6 +30,21 @@ class EditorAction {
 	resetElementId(id) {
 		Store.resetElementId(id)
 	}
+	// 准备copy的元素
+	preCopy(element) {
+		this.copyElement = element
+	}
+	paste() {
+		if (!this.copyElement) 
+			return false
+		let newElement = Func.deepCopy(this.copyElement)
+		newElement.position = {
+			left: '200px',
+			top: '200px'
+		}
+		this.copyElement = null
+		Store.addElement(newElement)
+	}
 }
 
 function geometricTemplate(c) {
@@ -51,7 +68,8 @@ function iconTemplate(c) {
       "top": "200px"
     },
 		"style": {
-			"fontSize": "30px"
+			"fontSize": "30px",
+			color: "#FF4040"
 		}
 	}
 }
@@ -70,7 +88,7 @@ function textTemplate() {
       "fontSize": "15px",
       "fontWeight": 200,
       "lineHeight": "30px",
-      "color": "#aaa"
+      "color": "#000"
     }
 	}
 }

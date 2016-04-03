@@ -1,41 +1,15 @@
 <template lang="jade">
-	.container
-		.flex-box.percentage
-			percentage(type="opacity", :value="opacity")
-		.flex-box.percentage(v-if="type !== 'background'")
-			percentage(type="rotate", :value="rotate")
+	.flex-box.percentage
+		percentage(type="opacity", :value="opacity")
+	.flex-box.percentage(v-if="type !== 'background'")
+		percentage(type="rotate", :value="rotate")
 </template>
 
 <style lang="less" scoped>
 	@import '../../../less/variable.less';
 
-	.container {
-		background-color: @controller-background-color;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		align-content: flex-start;
-		flex-wrap: wrap;
+	.flex-box.percentage {
 		width: 100%;
-		padding: 10px;
-		box-sizing: border-box;
-		border-bottom: 1px solid #d6d6d6;
-
-		.flex-box.percentage {
-			width: 100%;
-			display: flex;
-			justify-content: space-around;
-			padding: 15px 0;
-
-			label {
-				width: 30%;
-				font-size: 13px;
-				text-align: left;
-			}
-			input {
-				width: 60%;
-			}
-		}
 	}
 </style>
 

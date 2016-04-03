@@ -46,7 +46,6 @@
 	import Event from './Action2Store/Event.js'
 	import DragEvent from './helper/DragEvent.js'
 	import FlexEvent from './helper/FlexEvent.js'
-	import { px, lower, upper, gouGu } from './helper/func.js'
 
 	import './less/common.less'
 

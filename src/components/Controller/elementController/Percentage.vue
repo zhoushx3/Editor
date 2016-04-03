@@ -15,14 +15,11 @@
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
-		label {
-			width: 30%;
-		}
 		input[type="range"] {
-			width: 50%;
+			flex: 1;
 		}
 		input[type="number"] {
-			width: 20%;
+			width: 70px;
 		}
 		
 	}

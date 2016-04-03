@@ -161,6 +161,7 @@
 			}
 		},
 		ready() {
+			let self = this
 			if (this.type === 'background') {
 				$.contextMenu({
 		      selector: `[keyId=${this.key}]`,
@@ -186,9 +187,9 @@
 		      selector: `[keyId=${this.key}]`,
 		      animation: {duration: 200, show: 'slideDown', hide: 'slideUp'},
 		      className: 'contextmenu-custom contextmenu-custom__highlight',
-		      zIndex: ()=>{
-						return 999
-					},
+		      zIndex: function() {
+		      	return self.zIndex + 1
+		      },
 		      items: {
 		        copy: {
 		          name: '复制',
@@ -220,8 +221,7 @@
 		      },
 		      trigger: 'right',
 		      reposition: true,
-		      autoHide: false,
-		      zIndex: 0
+		      autoHide: true,
 		    })
 			}
 		}

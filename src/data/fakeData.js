@@ -26,7 +26,7 @@ var fakeData = {
         "fontSize": "10px",
         "fontWeight": 200,
         "lineHeight": "10px",
-        "color": "#aaa",
+        "color": "#000",
         "zIndex": 1
       }
     },
@@ -54,7 +54,8 @@ var fakeData = {
       },
       "style": {
         "fontSize": "30px",
-        "zIndex": 3
+        "zIndex": 3,
+        "color": "#FF4040",
       }
     },
     "4": {

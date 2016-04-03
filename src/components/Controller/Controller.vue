@@ -1,13 +1,13 @@
 <template lang="jade">
-	.controller
+	#controller
 		component(v-if="selectid === undefined", :is="currentPanel")
 		template(v-else)
-			//- color(v-if="showColorController", :element="element")
-			//- flex(v-if="showFlexController", :element="element" )
-			font(v-if="showFontController", :element="element" )
-			position(v-if="showPositionController", :element="element")
-			size(:element="element")
-			other(:element="element")
+			.container
+				color(v-if="showColorController", :element="element", :selectid="selectid")
+				font(v-if="showFontController", :element="element" )
+				position(v-if="showPositionController", :element="element")
+				size(:element="element")
+				other(:element="element")
 	.group
 		.group-single(@click="showPanel('single')")
 		.group-group(@click="showPanel('group')")
@@ -15,14 +15,46 @@
 </template>
 
 <style lang="less">
-	.controller {
+// 拆出来是为了减少因为后代选择器造成的优先级过高
+	@import '../../less/variable.less';
+
+	#controller {
 		position: absolute;
 		top: 30px;
 		bottom: 0;
 		right: 0;
 		width: 300px;
-		border-left: 1px solid #000;
 		overflow: hidden;
+		background-color: @controller-background-color;
+	}
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: space-between;
+		flex-wrap: wrap;
+		width: 100%;
+		padding: 10px;
+		box-sizing: border-box;
+	}
+	.flex-box {
+		width: 50%;
+		display: flex;
+		justify-content: flex-start;
+		padding: 15px 0;
+		border-bottom: 1px solid #d6d6d6;
+
+		label {
+			width: 53.1px;
+			font-size: 13px;
+			text-align: left;
+			line-height: 27px;
+		}
+		input {
+			width: 70px;
+    	height: 25px;
+			border-radius: 2px;
+		}
 	}
 	.group {
 		position: absolute;
@@ -110,6 +142,7 @@
 		methods: {
 			showPanel(type) {
 				EditorAction.resetElementId(undefined)
+				this.$broadcast('closeNest')
 				this.currentPanel = 'group-' + type
 			}
 		},
@@ -126,6 +159,13 @@
 			'position': Position
 		},
 		ready() {
+      $('#controller').niceScroll({
+        cursorcolor: '#d6d6d6',
+        railalign: 'right',
+        horizrailenabled: false,
+        cursoropacitymin:0,
+        autohidemode: false
+      })
 		}
 	}
 

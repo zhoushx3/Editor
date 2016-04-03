@@ -94,7 +94,9 @@ class ElementAction {
 				ele.position[property] = ( value || 0 ) + 'px'
 				break
 			case 'zIndex':
-				ele.style['zIndex'] = value
+			case 'color':
+			case 'background-color':
+				ele.style[property] = value
 				break
 
 		}

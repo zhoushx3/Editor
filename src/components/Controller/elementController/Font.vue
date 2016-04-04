@@ -6,11 +6,16 @@
 		label 字号
 		input(type="number", :value="fontSize", @input="setStyle('fontSize', $event)")
 	.flex-box
-		label 行距
-		input(type="number", :value="lineHeight", @input="setStyle('lineHeight', $event)")
-	.flex-box.charDist
 		label 字符间距
 		input(type="number", :value="letterSpacing", @input="setStyle('letterSpacing', $event)")
+	.flex-box.charDist
+		label 行距
+		input(type="number", :value="lineHeight", @input="setStyle('lineHeight', $event)")
+	.flex-box.font-weight
+		label 粗细
+		div(v-for="align in fontWeightBtn",
+				:class="align == fontWeight ? 'active' : ''",
+				@click="setStyle('fontWeight', align)") {{ align }}
 	.flex-box.text-align
 		label 对齐
 		div(v-for="align in alignBtn",
@@ -38,7 +43,8 @@
 	.flex-box.charDist {
 		width: 100%;
 	}
-	.flex-box.text-align {
+	.flex-box.text-align,
+	.flex-box.font-weight {
 		width: 100%;
 
 		div {
@@ -71,7 +77,8 @@
 			return {
 				fontFamily: fontFamily,
 				selectFont: 'SimSun',
-				alignBtn: [ ['left', '左对齐'], ['center', '居中'], ['right', '右对齐'] ]
+				alignBtn: [ ['left', '左对齐'], ['center', '居中'], ['right', '右对齐'] ],
+				fontWeightBtn: [ 200, 500, 900]
 			}
 		},
 		computed: {
@@ -79,13 +86,16 @@
 				return this.element.text || ''
 			},
 			fontSize() {
-				return parseInt(this.element.style.fontSize) || 0
+				return parseInt(this.element.style.fontSize || 0)
+			},
+			fontWeight() {
+				return parseInt(this.element.style.fontWeight || 200)
 			},
 			lineHeight() {
-				return parseInt(this.element.style.lineHeight) || 0
+				return parseInt(this.element.style.lineHeight || 0)
 			},
 			letterSpacing() {
-				return parseInt(this.element.style.letterSpacing) || 0
+				return parseInt(this.element.style.letterSpacing || 0)
 			},
 			textAlign() {
 				return this.element.style.textAlign || 'left'
@@ -98,6 +108,7 @@
 			setStyle(property, event) {
 				switch(property) {
 					case 'textAlign':
+					case 'fontWeight':
 						ElementAction.setStyle(property, event)
 					break
 					default:

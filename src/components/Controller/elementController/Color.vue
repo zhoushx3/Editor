@@ -1,23 +1,16 @@
 <template lang="jade">
-	.flex-box.color
-		label 更换颜色
-		input(type='text')
+	input(type='text')
 </template>
 
 <style lang="less" scoped>
 	@import '../../../less/variable.less';
 
-	.flex-box.color {
-		width: 100%;
-		justify-content: flex-start;
-
-		label {
-			width: 24%;
-		}
-	}
-
 	input {
+		width: 30%;
 		cursor: pointer;
+	}
+	.sp-replacer.sp-light {
+		margin-right: 10px;
 	}
 	.sp-replacer.sp-light .sp-dd {
 		display: none;
@@ -34,38 +27,21 @@
 
 	export default {
 	  name: 'color-controller',
-	  props: ['element', 'selectid'],
+	  props: ['element', 'selectid', 'colortype'],
 	  computed: {
 	  	type() {
 	  		return this.element.type
 	  	},
-	  	colorType() {
-	  		switch(this.type) {
-	  			case 'icon':
-	  			case 'text':
-	  				return 'color'
-	  				break
-	  			case 'line':
-	  				return 'border-bottom-color'
-	  				break
-	  			case 'geometric':
-	  				return 'background-color'
-	  				break
-	  			default:
-	  				return 'background-color'
-	  				break
-	  		}
-	  	},
 	  	color() {
-	  		if (this.type === 'geometric')
-	  			return this.element.option[this.colorType]
-  			return this.element.style[this.colorType]
+	  		if (this.type === 'geometric' || this.type === 'pie')
+	  			return this.element.option[this.colortype]
+  			return this.element.style[this.colortype]
 	  	}
 	  },
 	  methods: {
 	  	init() {
 	    	this.spectrumObj && this.spectrumObj.spectrum("destroy");
-		    this.spectrumObj = $(this.$el).find('input').spectrum({
+		    this.spectrumObj = $(this.$el).spectrum({
 		      color: this.color,
 		      showInput: true,
 		      showAlpha: true,
@@ -76,14 +52,14 @@
 		      showButtons: false,
 		      clickoutFiresChange: true,
 		    })
-		    $(this.$el).find('input').on('dragstart.spectrum', this.changeColor)
-		    $(this.$el).find('input').on('dragstop.spectrum', this.changeColor)
-		    $(this.$el).find('input').on('change.spectrum', this.fileChange)
-		    $(this.$el).find('input').on('move.spectrum', this.changeColor)
+		    $(this.$el).on('dragstart.spectrum', this.changeColor)
+		    $(this.$el).on('dragstop.spectrum', this.changeColor)
+		    $(this.$el).on('change.spectrum', this.fileChange)
+		    $(this.$el).on('move.spectrum', this.changeColor)
 	  	},
 	  	changeColor(event, color){
 	  		let newColor = color ? color.toString() : 'rgba(255,255,255,0)'
-  			ElementAction.setStyle(this.colorType, newColor)
+  			ElementAction.setStyle(this.colortype, newColor)
 	  	},
 	  	fileChange() {
 	  	// clickoutFiresChange时触发, 如果在修改A的时候点击B，会有bug，因为选中了B修改了Store.selectElement,接着ElementAction.setStyle所做的修改就传到了B去了

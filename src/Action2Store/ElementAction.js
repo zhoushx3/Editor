@@ -62,7 +62,7 @@ class ElementAction {
 					if (delX < 0 || delY < 0)
 						factor = -0.6
 					originStyle['fontSize'] = Func.px(Func.lower(10, fontSize + factor * Func.gouGu(delX, delY)))
-				} else if (ele.type === 'geometric') {
+				} else if (ele.type === 'geometric' || ele.type === 'pie') {
 					let option = ele['option']
 					width = option.width ? parseInt(option.width) : 24
 					option['width'] = option['height'] = Func.px ( Func.lower( width + delX, minW ) )
@@ -75,6 +75,7 @@ class ElementAction {
 	// value: 新值
 	setStyle(property, value) {
 		let ele = Object.assign({}, Store.selectElement)
+		console.log(property, value)
 		// let ele = Store.selectElement 会导致新添加的属性vue无法跟踪，原因是ele跟Store.selectElement指向同一引用，而Vue观察的引用对象增加属性时是不会觉察到的，所以新建一个ele，然后后面this.json.content[this.selectid] = newElement再重新赋值新的引用对象，Vue就能察觉到了
 		switch ( property ) {
 			case 'letterSpacing':
@@ -99,16 +100,18 @@ class ElementAction {
 			// case 'scale':
 			// 	ele.option['transform'] = `scale(${value})`
 			// 	break
+			case 'zIndex':
+			case 'color':
 			case 'textAlign':
 			case 'border-bottom-style':
+			case 'border-bottom-color':
+			case 'fontWeight':
 				ele.style[property] = value
 				break
 			case 'left':
 			case 'top':
 				ele.position[property] = ( value || 0 ) + 'px'
 				break
-			case 'zIndex':
-			case 'color':
 			case 'background-color':
 				// 给geometric使用的
 				if (ele.type === 'geometric')
@@ -116,14 +119,17 @@ class ElementAction {
 				else
 					ele.style[property] = value
 				break
-			case 'border-bottom-color':
-				ele.style[property] = value
-				break
 			case 'widthHeight':
-			// 给geometric使用的
+			// 给geometric 和 pie 使用的
 				ele.option['width'] = ( value || 0) + 'px'
 				ele.option['height'] = ( value || 0) + 'px'
 				break
+			case 'back-color':
+			case 'front-color':
+			case 'success-color':
+			// 给 pie用
+				ele.option[property] = value
+			break
 
 		}
 		Store.setElement(ele) // 重点是为了让 store 通知更新 View 

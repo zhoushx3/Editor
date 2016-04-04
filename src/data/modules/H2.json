@@ -1,0 +1,87 @@
+{
+  "7": {
+    "type": "line",
+    "position": {
+      "left": "-1px",
+      "top": "-1px"
+    },
+    "style": {
+      "zIndex": 6,
+      "width": "916px",
+      "height": "0",
+      "border-bottom-width": "150px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#3f3f42",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "8": {
+    "type": "geometric",
+    "position": {
+      "left": "383px",
+      "top": "75px"
+    },
+    "className": "g-circle",
+    "style": {
+      "zIndex": 8
+    },
+    "option": {
+      "background-color": "#000000",
+      "width": "150px",
+      "height": "150px",
+      "zIndex": 0
+    }
+  },
+  "9": {
+    "type": "geometric",
+    "position": {
+      "left": "347px",
+      "top": "40px"
+    },
+    "className": "g-circle",
+    "style": {
+      "zIndex": 0
+    },
+    "option": {
+      "background-color": "#414143",
+      "width": "220px",
+      "height": "220px",
+      "zIndex": 9
+    }
+  },
+  "10": {
+    "type": "text",
+    "position": {
+      "left": "32px",
+      "top": "26px"
+    },
+    "style": {
+      "width": "200px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "40px",
+      "fontWeight": 500,
+      "lineHeight": "57px",
+      "color": "#ffffff",
+      "zIndex": 10
+    },
+    "text": "周少雄"
+  },
+  "11": {
+    "type": "text",
+    "position": {
+      "left": "32px",
+      "top": "94px"
+    },
+    "style": {
+      "width": "200px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "13px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#ffffff",
+      "zIndex": 11
+    },
+    "text": "求职意向：Web前端工程师"
+  }
+}

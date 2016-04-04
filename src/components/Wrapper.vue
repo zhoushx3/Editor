@@ -1,12 +1,12 @@
 <template lang="jade">
 	.wrapper(:style="style", :keyId="key")
+		slot
 		.mask(@mousedown="drag", :class="targeted", :style="optionStyle")
 			.se-flex(v-if="seType", @mousedown="flex('se', $event)" )
 			.w-flex.flex(v-if="weType", @mousedown="flex('w', $event)")
 			.e-flex.flex(v-if="weType", @mousedown="flex('e', $event)")
 			.n-flex.flex(v-if="nsType", @mousedown="flex('n', $event)")
 			.s-flex.flex(v-if="nsType", @mousedown="flex('s', $event)")
-		slot
 
 </template>
 
@@ -116,7 +116,6 @@
 			},
 			zIndex() {
 				// 这个写法会监听到改变，归功于style / element变化
-				console.log(this.style.zIndex)
 				return parseInt(this.style.zIndex || 0)
 			},
 			targeted() {
@@ -131,7 +130,7 @@
 				return typeList.indexOf(this.type) !== -1
 			},
 			seType() {
-				let typeList = ['icon', 'geometric']
+				let typeList = ['icon', 'geometric', 'pie']
 				return typeList.indexOf(this.type) !== -1
 			}
 		},
@@ -185,6 +184,7 @@
 								return EditorAction.copyElement == null
 							},
 							callback: (key, opt) => {
+								console.log(arguments)
 								EditorAction.paste()
 							}
 						}

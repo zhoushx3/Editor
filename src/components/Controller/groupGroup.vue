@@ -3,9 +3,11 @@
 		.row-item(v-for="o in list" class="animated")
 			.label(:class="showList[o['key']] ? 'active' : ''", @click="showDetail(o['key'])") {{ o['cn'] }}
 			.detail-container(v-show="showList[o['key']]")
-				.row-detail.animated(v-for="x in o['module']",
+				.row-detail.animated(v-for="(key, src) in o['module']",
 										@mouseenter="mouseenter",
-										@mouseleave="mouseleave")
+										@mouseleave="mouseleave",
+										@click="chooseModule(key)")
+					img(:src="src", :alt="key")
 </template>
 
 <style lang="less" scoped>
@@ -52,6 +54,9 @@
 	  			&.hover {
 	  				border-color: #00CC9A;
 	  			}
+	  			img {
+	  				width: 100%;
+	  			}
 	  		}
   		}
   	}
@@ -80,8 +85,6 @@
 					'key': 'header', 'cn': '头部', 'module': Modules['header']
 				}, {
 					'key': 'content', 'cn': '内容', 'module': Modules['content']
-				}, {
-					'key': 'other', 'cn': '其他', 'module': Modules['other']
 				}]
 			},
 		},
@@ -99,6 +102,9 @@
 				for (let o in showList) {
 					showList[o] = type === o
 				}
+			},
+			chooseModule: function(key) {
+				EditorAction.addGroupModule(key)
 			}
 		},
 		ready() {

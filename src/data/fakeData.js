@@ -13,6 +13,22 @@ var fakeData = {
         "zIndex": 0
       }
     },
+    "2": {
+      "type": "pie",
+      "position": {
+        "left": "10px",
+        "top": "10px",
+      },
+      "option": {
+        "front-color": "#aaa",
+        "success-color": "#f00",
+        "back-color": "#bbb"
+      },
+      "style": {
+        "zIndex": 1
+      },
+      score: 90
+    },
     // "1": {
     //   "type": "text",
     //   "text": "奋斗史就是发的刻录机",
@@ -90,7 +106,7 @@ var fakeData = {
   },
   "contentNum": 6
 }
-// key 暂时不用"0"
+  // key 暂时不用"0"
 
 export default fakeData
 

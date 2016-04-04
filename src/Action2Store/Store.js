@@ -40,24 +40,36 @@ class Store {
 		this.fetchJson()
 	}
 
-	addElement(newElement) {
+	addElement(newElement, isGroup) {
+		// isGroup 指明是否来源为模板
 		// 这样赋值才能让 Vue 将其转为响应的, 下面的删除也是
 		// 这里不能使用Store.content来操作，否则json.content还是保持原来的(指针)
+		// 模板元素中的zIndex保持不变
 		let contentNum = ( this.json.contentNum += 1 )
-		newElement['style']['zIndex'] = contentNum
+		if (!isGroup) newElement['style']['zIndex'] = contentNum
 
 		this.json.content = Object.assign({}, this.json.content, {
 			[ contentNum ]: newElement
 		})
 		this.selectid = contentNum
 		this.selectElement = this.json.content[this.selectid]
-		this.fetchJson()
+		if (!isGroup) this.fetchJson()
 	}
 
 	deleteElement(key) {
 		delete this.json.content[key]
 		this.json.content = Object.assign({}, this.json.content)
 		this.resetElementId(undefined)
+	}
+
+	// 添加组合模板
+	addGroupModule(json) {
+		if ( typeof json !== 'object')
+			return
+		for (let i in json) {
+			this.addElement(json[i], true)
+		}
+		this.fetchJson()
 	}
 }
 

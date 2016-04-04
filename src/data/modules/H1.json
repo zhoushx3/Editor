@@ -1,0 +1,272 @@
+{
+    "8": {
+        "type": "line",
+        "position": {
+            "left": "0px",
+            "top": "0px"
+        },
+        "style": {
+            "zIndex": 8,
+            "width": "916px",
+            "height": "0",
+            "border-bottom-width": "40px",
+            "border-bottom-style": "solid",
+            "border-bottom-color": "#4c9ed1",
+            "border-bottom-left-radius": 0,
+            "border-bottom-right-radius": 0
+        }
+    },
+    "9": {
+        "type": "line",
+        "position": {
+            "left": "20px",
+            "top": "230px"
+        },
+        "style": {
+            "zIndex": 9,
+            "width": "867px",
+            "height": "0",
+            "border-bottom-width": "10px",
+            "border-bottom-style": "solid",
+            "border-bottom-color": "#4c9ed1",
+            "border-bottom-left-radius": 0,
+            "border-bottom-right-radius": 0
+        }
+    },
+    "10": {
+        "type": "line",
+        "position": {
+            "left": "20px",
+            "top": "50px"
+        },
+        "style": {
+            "zIndex": 10,
+            "width": "132px",
+            "height": "0",
+            "border-bottom-width": "170px",
+            "border-bottom-style": "solid",
+            "border-bottom-color": "#c8c4c4",
+            "border-bottom-left-radius": 0,
+            "border-bottom-right-radius": 0
+        }
+    },
+    "11": {
+        "type": "text",
+        "position": {
+            "left": "182px",
+            "top": "44px"
+        },
+        "style": {
+            "width": "200px",
+            "fontFamily": "Microsoft Yahei",
+            "fontSize": "41px",
+            "fontWeight": 900,
+            "lineHeight": "54px",
+            "color": "#4da1d4",
+            "zIndex": 11,
+            "letterSpacing": "0px"
+        },
+        "text": "周少雄"
+    },
+    "12": {
+        "type": "geometric",
+        "position": {
+            "left": "181px",
+            "top": "190px"
+        },
+        "className": "g-circle",
+        "style": {
+            "zIndex": 12
+        },
+        "option": {
+            "background-color": "#499dcf",
+            "height": "31px",
+            "width": "31px"
+        }
+    },
+    "13": {
+        "type": "geometric",
+        "position": {
+            "left": "645px",
+            "top": "190px"
+        },
+        "className": "g-circle",
+        "style": {
+            "zIndex": 13
+        },
+        "option": {
+            "background-color": "#499dcf",
+            "height": "31px",
+            "width": "31px"
+        }
+    },
+    "14": {
+        "type": "geometric",
+        "position": {
+            "left": "291px",
+            "top": "190px"
+        },
+        "className": "g-circle",
+        "style": {
+            "zIndex": 14
+        },
+        "option": {
+            "background-color": "#499dcf",
+            "height": "31px",
+            "width": "31px"
+        }
+    },
+    "15": {
+        "type": "geometric",
+        "position": {
+            "left": "469px",
+            "top": "190px"
+        },
+        "className": "g-circle",
+        "style": {
+            "zIndex": 15
+        },
+        "option": {
+            "background-color": "#4a9acc",
+            "height": "31px",
+            "width": "31px"
+        }
+    },
+    "16": {
+        "type": "icon",
+        "position": {
+            "left": "649px",
+            "top": "191px"
+        },
+        "className": "icon-iconfontfeedback",
+        "style": {
+            "fontSize": "23px",
+            "color": "#ffffff",
+            "zIndex": 16
+        }
+    },
+    "17": {
+        "type": "icon",
+        "position": {
+            "left": "295px",
+            "top": "191px"
+        },
+        "className": "icon-iconfonthome",
+        "style": {
+            "fontSize": "23px",
+            "color": "#ffffff",
+            "zIndex": 17
+        }
+    },
+    "18": {
+        "type": "icon",
+        "position": {
+            "left": "473px",
+            "top": "191px"
+        },
+        "className": "icon-iconfont31dianhua",
+        "style": {
+            "fontSize": "23px",
+            "color": "#ffffff",
+            "zIndex": 18
+        }
+    },
+    "19": {
+        "type": "icon",
+        "position": {
+            "left": "184px",
+            "top": "191px"
+        },
+        "className": "icon-iconfont31haoyou",
+        "style": {
+            "fontSize": "23px",
+            "color": "#f4f4f4",
+            "zIndex": 19
+        }
+    },
+    "20": {
+        "type": "text",
+        "position": {
+            "left": "226px",
+            "top": "190px"
+        },
+        "style": {
+            "width": "64px",
+            "fontFamily": "Microsoft Yahei",
+            "fontSize": "15px",
+            "fontWeight": 200,
+            "lineHeight": "30px",
+            "color": "#4b9dcf",
+            "zIndex": 20
+        },
+        "text": "24岁"
+    },
+    "21": {
+        "type": "text",
+        "position": {
+            "left": "340px",
+            "top": "191px"
+        },
+        "style": {
+            "width": "99px",
+            "fontFamily": "Microsoft Yahei",
+            "fontSize": "15px",
+            "fontWeight": 200,
+            "lineHeight": "30px",
+            "color": "#4b9dcf",
+            "zIndex": 21
+        },
+        "text": "广东省广州市"
+    },
+    "22": {
+        "type": "text",
+        "position": {
+            "left": "516px",
+            "top": "190px"
+        },
+        "style": {
+            "width": "96px",
+            "fontFamily": "Microsoft Yahei",
+            "fontSize": "15px",
+            "fontWeight": 200,
+            "lineHeight": "30px",
+            "color": "#4b9dcf",
+            "zIndex": 22
+        },
+        "text": "13929591279"
+    },
+    "23": {
+        "type": "text",
+        "position": {
+            "left": "690px",
+            "top": "190px"
+        },
+        "style": {
+            "width": "158px",
+            "fontFamily": "Microsoft Yahei",
+            "fontSize": "15px",
+            "fontWeight": 200,
+            "lineHeight": "30px",
+            "color": "#4b9dcf",
+            "zIndex": 23
+        },
+        "text": "1006487900@qq.com"
+    },
+    "24": {
+        "type": "text",
+        "position": {
+            "left": "181px",
+            "top": "102px"
+        },
+        "style": {
+            "width": "184px",
+            "fontFamily": "Microsoft Yahei",
+            "fontSize": "18px",
+            "fontWeight": 500,
+            "lineHeight": "30px",
+            "color": "#4b9dcf",
+            "zIndex": 24
+        },
+        "text": "应聘web前端工程师"
+    }
+}

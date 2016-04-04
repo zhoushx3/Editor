@@ -30,7 +30,7 @@
 				return  {
 					height: width,
 					width: width,
-					'background-color': '#D871FF'
+					'background-color': this.option['background-color']
 				}
 			}
 		},

@@ -1,0 +1,471 @@
+{
+  "0": {
+    "type": "background",
+    "position": {
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "bottom": 0
+    },
+    "style": {
+      "background-color": "#fff",
+      "zIndex": 0
+    }
+  },
+  "7": {
+    "type": "line",
+    "position": {
+      "left": "0px",
+      "top": "0px"
+    },
+    "style": {
+      "zIndex": 7,
+      "width": "916px",
+      "height": "0",
+      "border-bottom-width": "40px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#4c9ed1",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "8": {
+    "type": "line",
+    "position": {
+      "left": "20px",
+      "top": "230px"
+    },
+    "style": {
+      "zIndex": 8,
+      "width": "867px",
+      "height": "0",
+      "border-bottom-width": "10px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#4c9ed1",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "9": {
+    "type": "line",
+    "position": {
+      "left": "20px",
+      "top": "50px"
+    },
+    "style": {
+      "zIndex": 9,
+      "width": "132px",
+      "height": "0",
+      "border-bottom-width": "170px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#c8c4c4",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "10": {
+    "type": "text",
+    "position": {
+      "left": "182px",
+      "top": "44px"
+    },
+    "style": {
+      "width": "200px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "41px",
+      "fontWeight": 900,
+      "lineHeight": "54px",
+      "color": "#4da1d4",
+      "zIndex": 10,
+      "letterSpacing": "0px"
+    },
+    "text": "周少雄"
+  },
+  "11": {
+    "type": "geometric",
+    "position": {
+      "left": "181px",
+      "top": "190px"
+    },
+    "className": "g-circle",
+    "style": {
+      "zIndex": 11
+    },
+    "option": {
+      "background-color": "#499dcf",
+      "height": "31px",
+      "width": "31px"
+    }
+  },
+  "12": {
+    "type": "geometric",
+    "position": {
+      "left": "645px",
+      "top": "190px"
+    },
+    "className": "g-circle",
+    "style": {
+      "zIndex": 12
+    },
+    "option": {
+      "background-color": "#499dcf",
+      "height": "31px",
+      "width": "31px"
+    }
+  },
+  "13": {
+    "type": "geometric",
+    "position": {
+      "left": "291px",
+      "top": "190px"
+    },
+    "className": "g-circle",
+    "style": {
+      "zIndex": 13
+    },
+    "option": {
+      "background-color": "#499dcf",
+      "height": "31px",
+      "width": "31px"
+    }
+  },
+  "14": {
+    "type": "geometric",
+    "position": {
+      "left": "469px",
+      "top": "190px"
+    },
+    "className": "g-circle",
+    "style": {
+      "zIndex": 14
+    },
+    "option": {
+      "background-color": "#4a9acc",
+      "height": "31px",
+      "width": "31px"
+    }
+  },
+  "15": {
+    "type": "icon",
+    "position": {
+      "left": "649px",
+      "top": "191px"
+    },
+    "className": "icon-iconfontfeedback",
+    "style": {
+      "fontSize": "23px",
+      "color": "#ffffff",
+      "zIndex": 15
+    }
+  },
+  "16": {
+    "type": "icon",
+    "position": {
+      "left": "295px",
+      "top": "191px"
+    },
+    "className": "icon-iconfonthome",
+    "style": {
+      "fontSize": "23px",
+      "color": "#ffffff",
+      "zIndex": 16
+    }
+  },
+  "17": {
+    "type": "icon",
+    "position": {
+      "left": "473px",
+      "top": "191px"
+    },
+    "className": "icon-iconfont31dianhua",
+    "style": {
+      "fontSize": "23px",
+      "color": "#ffffff",
+      "zIndex": 17
+    }
+  },
+  "18": {
+    "type": "icon",
+    "position": {
+      "left": "184px",
+      "top": "191px"
+    },
+    "className": "icon-iconfont31haoyou",
+    "style": {
+      "fontSize": "23px",
+      "color": "#f4f4f4",
+      "zIndex": 18
+    }
+  },
+  "19": {
+    "type": "text",
+    "position": {
+      "left": "226px",
+      "top": "189px"
+    },
+    "style": {
+      "width": "64px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#4b9dcf",
+      "zIndex": 19
+    },
+    "text": "24岁"
+  },
+  "20": {
+    "type": "text",
+    "position": {
+      "left": "340px",
+      "top": "191px"
+    },
+    "style": {
+      "width": "99px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#4b9dcf",
+      "zIndex": 20
+    },
+    "text": "广东省广州市"
+  },
+  "21": {
+    "type": "text",
+    "position": {
+      "left": "516px",
+      "top": "190px"
+    },
+    "style": {
+      "width": "96px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#4b9dcf",
+      "zIndex": 21
+    },
+    "text": "13929591279"
+  },
+  "22": {
+    "type": "text",
+    "position": {
+      "left": "690px",
+      "top": "190px"
+    },
+    "style": {
+      "width": "158px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#4b9dcf",
+      "zIndex": 22
+    },
+    "text": "1006487900@qq.com"
+  },
+  "23": {
+    "type": "text",
+    "position": {
+      "left": "181px",
+      "top": "102px"
+    },
+    "style": {
+      "width": "184px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "18px",
+      "fontWeight": 500,
+      "lineHeight": "30px",
+      "color": "#4b9dcf",
+      "zIndex": 23
+    },
+    "text": "应聘web前端工程师"
+  },
+  "24": {
+    "type": "line",
+    "position": {
+      "left": "20px",
+      "top": "275px"
+    },
+    "style": {
+      "zIndex": 24,
+      "width": "90px",
+      "height": "0",
+      "border-bottom-width": "50px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#4ba1d4",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "25": {
+    "type": "text",
+    "position": {
+      "left": "31px",
+      "top": "278px"
+    },
+    "style": {
+      "width": "77px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "16px",
+      "fontWeight": 200,
+      "lineHeight": "24px",
+      "color": "#ffffff",
+      "zIndex": 25
+    },
+    "text": "教育背景"
+  },
+  "26": {
+    "type": "text",
+    "position": {
+      "left": "26px",
+      "top": "300px"
+    },
+    "style": {
+      "width": "81px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "13px",
+      "fontWeight": 200,
+      "lineHeight": "24px",
+      "color": "#ffffff",
+      "zIndex": 26
+    },
+    "text": "EDUCATION"
+  },
+  "27": {
+    "type": "geometric",
+    "position": {
+      "left": "134px",
+      "top": "276px"
+    },
+    "className": "g-circle",
+    "style": {
+      "zIndex": 27
+    },
+    "option": {
+      "background-color": "#499fd3",
+      "height": "13px",
+      "width": "13px"
+    }
+  },
+  "28": {
+    "type": "line",
+    "position": {
+      "left": "90px",
+      "top": "343px"
+    },
+    "style": {
+      "zIndex": 28,
+      "width": "100px",
+      "height": "0",
+      "border-bottom-width": "2px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#a1a0a0",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0,
+      "transform": "rotate(90deg)"
+    }
+  },
+  "29": {
+    "type": "geometric",
+    "position": {
+      "left": "134px",
+      "top": "400px"
+    },
+    "className": "g-circle",
+    "style": {
+      "zIndex": 29
+    },
+    "option": {
+      "background-color": "#499fd3",
+      "height": "13px",
+      "width": "13px"
+    }
+  },
+  "30": {
+    "type": "text",
+    "position": {
+      "left": "163px",
+      "top": "266px"
+    },
+    "style": {
+      "width": "184px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "16px",
+      "fontWeight": 900,
+      "lineHeight": "30px",
+      "color": "#4b9dcf",
+      "zIndex": 30
+    },
+    "text": "2012.9 - 2016.7"
+  },
+  "31": {
+    "type": "text",
+    "position": {
+      "left": "165px",
+      "top": "294px"
+    },
+    "style": {
+      "width": "184px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "20px",
+      "fontWeight": 900,
+      "lineHeight": "30px",
+      "color": "#000000",
+      "zIndex": 31
+    },
+    "text": "国立中山大学"
+  },
+  "32": {
+    "type": "text",
+    "position": {
+      "left": "165px",
+      "top": "330px"
+    },
+    "style": {
+      "width": "479px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#000",
+      "zIndex": 32
+    },
+    "text": "软件学院12级10班班长 /  5D空间技术部干事"
+  },
+  "33": {
+    "type": "text",
+    "position": {
+      "left": "165px",
+      "top": "361px"
+    },
+    "style": {
+      "width": "354px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#000",
+      "zIndex": 33
+    },
+    "text": "2013 - 2014 中山大学校级优秀团员"
+  },
+  "34": {
+    "type": "text",
+    "position": {
+      "left": "165px",
+      "top": "388px"
+    },
+    "style": {
+      "width": "315px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#000",
+      "zIndex": 34
+    },
+    "text": "2014 - 2015 中山大学优秀奖学金三等奖"
+  }
+}

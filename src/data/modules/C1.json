@@ -1,0 +1,188 @@
+{
+  "24": {
+    "type": "line",
+    "position": {
+      "left": "20px",
+      "top": "275px"
+    },
+    "style": {
+      "zIndex": 24,
+      "width": "90px",
+      "height": "0",
+      "border-bottom-width": "50px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#4ba1d4",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "25": {
+    "type": "text",
+    "position": {
+      "left": "31px",
+      "top": "278px"
+    },
+    "style": {
+      "width": "77px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "16px",
+      "fontWeight": 200,
+      "lineHeight": "24px",
+      "color": "#ffffff",
+      "zIndex": 25
+    },
+    "text": "教育背景"
+  },
+  "26": {
+    "type": "text",
+    "position": {
+      "left": "26px",
+      "top": "300px"
+    },
+    "style": {
+      "width": "81px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "13px",
+      "fontWeight": 200,
+      "lineHeight": "24px",
+      "color": "#ffffff",
+      "zIndex": 26
+    },
+    "text": "EDUCATION"
+  },
+  "27": {
+    "type": "geometric",
+    "position": {
+      "left": "134px",
+      "top": "276px"
+    },
+    "className": "g-circle",
+    "style": {
+      "zIndex": 27
+    },
+    "option": {
+      "background-color": "#499fd3",
+      "height": "13px",
+      "width": "13px"
+    }
+  },
+  "28": {
+    "type": "line",
+    "position": {
+      "left": "90px",
+      "top": "343px"
+    },
+    "style": {
+      "zIndex": 28,
+      "width": "100px",
+      "height": "0",
+      "border-bottom-width": "2px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#a1a0a0",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0,
+      "transform": "rotate(90deg)"
+    }
+  },
+  "29": {
+    "type": "geometric",
+    "position": {
+      "left": "134px",
+      "top": "400px"
+    },
+    "className": "g-circle",
+    "style": {
+      "zIndex": 29
+    },
+    "option": {
+      "background-color": "#499fd3",
+      "height": "13px",
+      "width": "13px"
+    }
+  },
+  "30": {
+    "type": "text",
+    "position": {
+      "left": "163px",
+      "top": "266px"
+    },
+    "style": {
+      "width": "184px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "16px",
+      "fontWeight": 900,
+      "lineHeight": "30px",
+      "color": "#4b9dcf",
+      "zIndex": 30
+    },
+    "text": "2012.9 - 2016.7"
+  },
+  "31": {
+    "type": "text",
+    "position": {
+      "left": "165px",
+      "top": "294px"
+    },
+    "style": {
+      "width": "184px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "20px",
+      "fontWeight": 900,
+      "lineHeight": "30px",
+      "color": "#000000",
+      "zIndex": 31
+    },
+    "text": "国立中山大学"
+  },
+  "32": {
+    "type": "text",
+    "position": {
+      "left": "165px",
+      "top": "330px"
+    },
+    "style": {
+      "width": "479px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#000",
+      "zIndex": 32
+    },
+    "text": "软件学院12级10班班长 /  5D空间技术部干事"
+  },
+  "33": {
+    "type": "text",
+    "position": {
+      "left": "165px",
+      "top": "361px"
+    },
+    "style": {
+      "width": "354px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#000",
+      "zIndex": 33
+    },
+    "text": "2013 - 2014 中山大学校级优秀团员"
+  },
+  "34": {
+    "type": "text",
+    "position": {
+      "left": "165px",
+      "top": "388px"
+    },
+    "style": {
+      "width": "315px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 200,
+      "lineHeight": "30px",
+      "color": "#000",
+      "zIndex": 34
+    },
+    "text": "2014 - 2015 中山大学优秀奖学金三等奖"
+  }
+}

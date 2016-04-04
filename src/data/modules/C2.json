@@ -1,0 +1,258 @@
+{
+  "7": {
+    "type": "line",
+    "position": {
+      "left": "20px",
+      "top": "506px"
+    },
+    "style": {
+      "zIndex": 7,
+      "width": "90px",
+      "height": "0",
+      "border-bottom-width": "50px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#4ba1d4",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "8": {
+    "type": "text",
+    "position": {
+      "left": "30px",
+      "top": "510px"
+    },
+    "style": {
+      "width": "77px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "16px",
+      "fontWeight": 200,
+      "lineHeight": "24px",
+      "color": "#ffffff",
+      "zIndex": 8
+    },
+    "text": "软件技能"
+  },
+  "9": {
+    "type": "text",
+    "position": {
+      "left": "21px",
+      "top": "534px"
+    },
+    "style": {
+      "width": "81px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "13px",
+      "fontWeight": 200,
+      "lineHeight": "24px",
+      "color": "#ffffff",
+      "zIndex": 9,
+      "textAlign": "center"
+    },
+    "text": "SKILL"
+  },
+  "10": {
+    "type": "line",
+    "position": {
+      "left": "134px",
+      "top": "505px"
+    },
+    "style": {
+      "zIndex": 10,
+      "width": "71px",
+      "height": "0",
+      "border-bottom-width": "10px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#4c9ed1",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "11": {
+    "type": "line",
+    "position": {
+      "left": "134px",
+      "top": "572px"
+    },
+    "style": {
+      "zIndex": 11,
+      "width": "74px",
+      "height": "0",
+      "border-bottom-width": "10px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#4c9ed1",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "12": {
+    "type": "line",
+    "position": {
+      "left": "136px",
+      "top": "505px"
+    },
+    "style": {
+      "zIndex": 0,
+      "width": "99px",
+      "height": "0",
+      "border-bottom-width": "10px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#b6b6b6",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "13": {
+    "type": "line",
+    "position": {
+      "left": "135px",
+      "top": "572px"
+    },
+    "style": {
+      "zIndex": 0,
+      "width": "99px",
+      "height": "0",
+      "border-bottom-width": "10px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#b6b6b6",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "14": {
+    "type": "line",
+    "position": {
+      "left": "134px",
+      "top": "540px"
+    },
+    "style": {
+      "zIndex": 14,
+      "width": "59px",
+      "height": "0",
+      "border-bottom-width": "10px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#4c9ed1",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "15": {
+    "type": "line",
+    "position": {
+      "left": "134px",
+      "top": "602px"
+    },
+    "style": {
+      "zIndex": 15,
+      "width": "87px",
+      "height": "0",
+      "border-bottom-width": "10px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#4c9ed1",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "16": {
+    "type": "line",
+    "position": {
+      "left": "135px",
+      "top": "540px"
+    },
+    "style": {
+      "zIndex": 0,
+      "width": "99px",
+      "height": "0",
+      "border-bottom-width": "10px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#bdbdbd",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "17": {
+    "type": "line",
+    "position": {
+      "left": "134px",
+      "top": "602px"
+    },
+    "style": {
+      "zIndex": 0,
+      "width": "99px",
+      "height": "0",
+      "border-bottom-width": "10px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#b8b4b4",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  },
+  "18": {
+    "type": "text",
+    "position": {
+      "left": "264px",
+      "top": "494px"
+    },
+    "style": {
+      "width": "103px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 500,
+      "lineHeight": "30px",
+      "color": "#000",
+      "zIndex": 18
+    },
+    "text": "JAVASCRIPT"
+  },
+  "19": {
+    "type": "text",
+    "position": {
+      "left": "264px",
+      "top": "562px"
+    },
+    "style": {
+      "width": "103px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 500,
+      "lineHeight": "30px",
+      "color": "#000",
+      "zIndex": 19
+    },
+    "text": "HTML / CSS"
+  },
+  "20": {
+    "type": "text",
+    "position": {
+      "left": "264px",
+      "top": "526px"
+    },
+    "style": {
+      "width": "103px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 500,
+      "lineHeight": "30px",
+      "color": "#000",
+      "zIndex": 20
+    },
+    "text": "ORALCE DB"
+  },
+  "21": {
+    "type": "text",
+    "position": {
+      "left": "264px",
+      "top": "595px"
+    },
+    "style": {
+      "width": "103px",
+      "fontFamily": "Microsoft Yahei",
+      "fontSize": "15px",
+      "fontWeight": 500,
+      "lineHeight": "30px",
+      "color": "#000",
+      "zIndex": 21
+    },
+    "text": "C / C++"
+  }
+}

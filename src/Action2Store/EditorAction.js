@@ -41,8 +41,8 @@ class EditorAction {
 			return false
 		let newElement = Func.deepCopy(this.copyElement)
 		newElement.position = {
-			left: '200px',
-			top: '200px'
+			left: parseInt(newElement.position.left)+40+'px',
+			top: parseInt(newElement.position.top)+40+'px'
 		}
 		// this.copyElement = null
 		Store.addElement(newElement)
@@ -50,6 +50,19 @@ class EditorAction {
 	// 删除元素
 	deleteElement(key) {
 		Store.deleteElement(key)
+	}
+	// 添加组合模板
+	addGroupModule(key) {
+		$.ajax({
+			url: `src/data/modules/${key}.json`,
+			success: function(d) {
+				if (d) {
+					Store.addGroupModule(d)
+				} else {
+					alert('what?')
+				}
+			}
+		})
 	}
 }
 

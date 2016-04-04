@@ -3,16 +3,17 @@
 		component(v-if="selectid === undefined", :is="currentPanel")
 		template(v-else)
 			.container
-				color(v-if="showColorController", :element="element", :selectid="selectid")
+				.flex-box.color
+					color(v-for="color in colorTypes", :colortype="color", :element="element", :selectid="selectid")
 				font(v-if="showFontController", :element="element" )
 				position(v-if="showPositionController", :element="element")
 				size(:element="element")
 				other(:element="element")
 				linestyle(v-if="type==='line'", :element="element")
 	.group
-		.group-single(@click="showPanel('single')")
-		.group-group(@click="showPanel('group')")
-		.group-page(@click="showPanel('page')")
+		template(v-for="i in groupBtn")
+			div(@click="showPanel(i)", :class="'group-'+i")
+				img(:src="'../src/assets/img/'+i+'.png'")
 </template>
 
 <style lang="less">
@@ -57,6 +58,10 @@
 			border-radius: 2px;
 		}
 	}
+	.flex-box.color {
+		width: 100%;
+		justify-content: flex-start;
+	}
 	.group {
 		position: absolute;
 		right: 300px;
@@ -85,6 +90,9 @@
 				left: -50px;
 				font-size: 12px;
 				font-family: "Microsoft Yahei";
+			}
+			img {
+				width: 50%;
 			}
 		}
 		.group-single:hover:before {
@@ -118,14 +126,28 @@
 		data() {
 			return {
 				currentPanel: 'group-' + 'single',
+				groupBtn: ['single', 'group', 'page']
 			}
 		},
 		computed: {
 			type() {
 				return this.element['type']
 			},
+			colorTypes() {
+				switch (this.type) {
+	  			case 'icon':
+	  			case 'text':
+	  				return ['color']
+	  			case 'line':
+	  				return ['border-bottom-color']
+	  			case 'pie':
+	  				return ['back-color', 'front-color', 'success-color']
+	  			default:
+	  				return ['background-color']
+				}
+			},
 			showColorController() {
-				let type = ['icon', 'text', 'geometric', 'background', 'line']
+				let type = ['icon', 'text', 'geometric', 'background', 'line', 'pie']
 				return type.indexOf(this.type) !== -1
 			},
 			showFontController() {
@@ -133,7 +155,7 @@
 				return type.indexOf(this.type) !== -1
 			},
 			showPositionController() {
-				let type = ['icon', 'text', 'geometric', 'img', 'line']
+				let type = ['icon', 'text', 'geometric', 'img', 'line', 'pie']
 				return type.indexOf(this.type) !== -1
 			}
 		},

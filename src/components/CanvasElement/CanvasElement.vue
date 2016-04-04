@@ -35,6 +35,7 @@
 </style>
 
 <script>
+	import Pie from './Pie.vue'
 	import Img from './Img.vue'
 	import Text from './Text.vue'
 	import Icon from './Icon.vue'
@@ -64,6 +65,7 @@
 			}
 		},
 		components: {
+			'pie-component': Pie,
 			'img-component': Img,
 			'line-component': Line,
 			'icon-component': Icon,
@@ -72,10 +74,6 @@
 			'background-component': Background
 		},
 		watch: {
-			content: function(v){
-				console.log(v)
-
-			}
 		},
 		ready: function() {
       $('#canvas').niceScroll({

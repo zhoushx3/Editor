@@ -51,8 +51,9 @@
 						}]
 						break
 					case 'geometric':
+					case 'pie':
 						return [{
-							key: 'widthHeight', value: parseInt(this.element.option.width || 24), cn: '大小'
+							key: 'widthHeight', value: parseInt(this.element.option.width || 30), cn: '大小'
 						}] // right now....
 						break
 					case 'background':

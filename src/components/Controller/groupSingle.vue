@@ -62,6 +62,7 @@
 <script>
 	import PicNest from './groupSingles/PicNest.vue'
 	import IconNest from './groupSingles/IconNest.vue'
+	import MoreNest from './/groupSingles/MoreNest.vue'
 	import GeometricNest from './groupSingles/GeometricNest.vue'
 	import EditorAction from '../../Action2Store/EditorAction.js'
 
@@ -103,6 +104,11 @@
 							img: 'src/assets/img/line_white.png',
 							background: 'rgb(0, 204, 154)',
 							digest: '线条',
+						}, {
+							type: 'more',
+							img: 'src/assets/img/more_white.png',
+							background: 'rgb(115, 106, 106)',
+							digest: '其他'
 						}]
 				}
 				return o		
@@ -133,6 +139,7 @@
 		components: {
 			'pic-nest': PicNest,
 			'icon-nest': IconNest,
+			'more-nest': MoreNest,
 			'geometric-nest': GeometricNest
 		},
 		ready() {

@@ -77,7 +77,6 @@
 				this.selectid = selectid
 				this.selectElement = selectElement
 			}
-
 		},
 		watch: {},
 		ready() {

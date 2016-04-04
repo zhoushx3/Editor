@@ -38,35 +38,40 @@
 			values() {
 				switch(this.type) {
 					case 'icon':
-						return [{key: 'fontSize', value: parseInt(this.element.style.fontSize) || 0, cn: '大小'}]
+						return [{key: 'fontSize', value: parseInt(this.element.style.fontSize || 0), cn: '大小'}]
 						break
 					case 'text':
-						return [{key: 'width', value: parseInt(this.element.style.width) || 0, cn: '宽度'}]
+						return [{key: 'width', value: parseInt(this.element.style.width || 0), cn: '宽度'}]
 						break
 					case 'img':
 						return [{
-							key: 'width', value: parseInt(this.element.style.width) || 0, cn: '宽度'
+							key: 'width', value: parseInt(this.element.style.width || 0), cn: '宽度'
 						}, {
-							key: 'height', value: parseInt(this.element.style.height) || 0, cn: '高度'
+							key: 'height', value: parseInt(this.element.style.height || 0), cn: '高度'
 						}]
 						break
-					case 'geometry':
-						return [] // right now....
+					case 'geometric':
+						return [{
+							key: 'widthHeight', value: parseInt(this.element.option.width || 24), cn: '大小'
+						}] // right now....
 						break
 					case 'background':
 						return []
 						break
 					case 'line':
 						return [{
-							key: 'width', value: parseInt(this.element.style.width) || 0, cn: '宽度'
+							key: 'width', value: parseInt(this.element.style.width || 0), cn: '宽度'
 						}, {
-							key: 'border-bottom-width', value: parseInt(this.element.style['border-bottom-width']) || 0, cn: '厚度'
+							key: 'border-bottom-width', value: parseInt(this.element.style['border-bottom-width'] || 0), cn: '厚度'
 						}]
 				}
 			}
 		},
 		methods: {
 			setStyle(property, event) {
+				if (property === 'width') {
+					event.target.value = event.target.value > parseInt($('#center-canvas').width()) ? parseInt($('#center-canvas').width()) : event.target.value
+				}
 				ElementAction.setStyle(property, event.target.value)
 			}
 		},

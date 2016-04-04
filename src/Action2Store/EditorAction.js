@@ -44,8 +44,12 @@ class EditorAction {
 			left: '200px',
 			top: '200px'
 		}
-		this.copyElement = null
+		// this.copyElement = null
 		Store.addElement(newElement)
+	}
+	// 删除元素
+	deleteElement(key) {
+		Store.deleteElement(key)
 	}
 }
 
@@ -58,6 +62,9 @@ function geometricTemplate(c) {
       "top": "200px"
     },
 		"style": {},
+		"option": {
+			'background-color': '#D871FF'
+		}
 	}
 }
 

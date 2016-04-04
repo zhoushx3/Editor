@@ -36,8 +36,11 @@
 	  name: 'color-controller',
 	  props: ['element', 'selectid'],
 	  computed: {
+	  	type() {
+	  		return this.element.type
+	  	},
 	  	colorType() {
-	  		switch(this.element.type) {
+	  		switch(this.type) {
 	  			case 'icon':
 	  			case 'text':
 	  				return 'color'
@@ -45,13 +48,17 @@
 	  			case 'line':
 	  				return 'border-bottom-color'
 	  				break
+	  			case 'geometric':
+	  				return 'background-color'
+	  				break
 	  			default:
 	  				return 'background-color'
 	  				break
 	  		}
 	  	},
 	  	color() {
-	  		console.log(this.colorType)
+	  		if (this.type === 'geometric')
+	  			return this.element.option[this.colorType]
   			return this.element.style[this.colorType]
 	  	}
 	  },
@@ -86,7 +93,6 @@
 	  watch: {
 	  	selectid: function() {
 	  		this.init()
-	  		console.log(this.color)
 	  	}
 	  },
 	  ready() {

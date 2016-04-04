@@ -13,79 +13,80 @@ var fakeData = {
         "zIndex": 0
       }
     },
-    "1": {
-      "type": "text",
-      "text": "奋斗史就是发的刻录机",
-      "position": {
-        "left": "10px",
-        "top": "10px"
-      },
-      "style": {
-        "width": "200px",
-        "fontFamily": "Microsoft Yahei",
-        "fontSize": "10px",
-        "fontWeight": 200,
-        "lineHeight": "10px",
-        "color": "#000",
-        "zIndex": 1
-      }
-    },
-    "2": {
-      "type": "img",
-      "position": {
-        "left": "30px",
-        "top": "30px"
-      },
-      "style": {
-        "width": "100px",
-        "height": "100px",
-        "opacity": 1,
-        "zIndex": 2
-      },
-      "src": "build/node.png",
-      "alt": "图一"
-    },
-    "3": {
-      "type": "icon",
-      "className": "icon-iconfontfav",
-      "position": {
-        "left": "40px",
-        "top": "100px"
-      },
-      "style": {
-        "fontSize": "30px",
-        "zIndex": 3,
-        "color": "#FF4040",
-      }
-    },
-    "4": {
-      "type": "geometric",
-      "className": "g-moon",
-      "position": {
-        "left": "200px",
-        "top": "200px"
-      },
-      "style": {
-        "zIndex": 4
-      }
-    },
-    "5": {
-      "type": "line",
-      "position": {
-        "left": "200px",
-        "top": "300px",
-      },
-      "style": {
-        "zIndex": 5,
-        "width": "300px",
-        "height": "0",
-        "border-bottom-style": "solid",
-        "border-bottom-width": "2px",
-        "border-bottom-color": "#f00",
-        "border-bottom-left-radius": 0,
-        "border-bottom-right-radius": 0
-      }
-    }
+    // "1": {
+    //   "type": "text",
+    //   "text": "奋斗史就是发的刻录机",
+    //   "position": {
+    //     "left": "10px",
+    //     "top": "10px"
+    //   },
+    //   "style": {
+    //     "width": "200px",
+    //     "fontFamily": "Microsoft Yahei",
+    //     "fontSize": "10px",
+    //     "fontWeight": 200,
+    //     "lineHeight": "10px",
+    //     "color": "#000",
+    //     "zIndex": 1
+    //   }
+    // },
+    // "2": {
+    //   "type": "img",
+    //   "position": {
+    //     "left": "30px",
+    //     "top": "30px"
+    //   },
+    //   "style": {
+    //     "width": "100px",
+    //     "height": "100px",
+    //     "opacity": 1,
+    //     "zIndex": 2
+    //   },
+    //   "src": "build/node.png",
+    //   "alt": "图一"
+    // },
+    // "3": {
+    //   "type": "icon",
+    //   "className": "icon-iconfontfav",
+    //   "position": {
+    //     "left": "40px",
+    //     "top": "100px"
+    //   },
+    //   "style": {
+    //     "fontSize": "30px",
+    //     "zIndex": 3,
+    //     "color": "#FF4040",
+    //   }
+    // },
+    // "4": {
+    //   "type": "geometric",
+    //   "className": "g-moon",
+    //   "position": {
+    //     "left": "200px",
+    //     "top": "200px"
+    //   },
+    //   "style": {
+    //     "zIndex": 4
+    //   },
+    //  "option": {}
+    // },
+    // "5": {
+    //   "type": "line",
+    //   "position": {
+    //     "left": "200px",
+    //     "top": "300px",
+    //   },
+    //   "style": {
+    //     "zIndex": 5,
+    //     "width": "300px",
+    //     "height": "0",
+    //     "border-bottom-style": "solid",
+    //     "border-bottom-width": "2px",
+    //     "border-bottom-color": "#f00",
+    //     "border-bottom-left-radius": 0,
+    //     "border-bottom-right-radius": 0
+    //   }
+    // }
   },
   "contentNum": 6
 }

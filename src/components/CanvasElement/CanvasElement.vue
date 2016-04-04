@@ -1,6 +1,6 @@
 <template lang="jade">
 	#canvas
-		.center-canvas(:style="style")
+		#center-canvas(:style="style")
 			template(v-for="element in content")
 				component(:is="elementComponent($key)",
 									:key="$key",
@@ -23,7 +23,7 @@
 		display: flex;
 		justify-content: center;
 
-		.center-canvas {
+		#center-canvas {
 			position: relative;
 			// max-width: @canvas-width;
 			margin-top: 30px;
@@ -72,6 +72,10 @@
 			'background-component': Background
 		},
 		watch: {
+			content: function(v){
+				console.log(v)
+
+			}
 		},
 		ready: function() {
       $('#canvas').niceScroll({

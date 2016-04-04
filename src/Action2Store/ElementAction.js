@@ -30,7 +30,8 @@ class ElementAction {
 		let minW = 10
 		let minH = 10
 
-		let ele = Store.selectElement
+		let ele = Object.assign({}, Store.selectElement)
+		
 		let originPosition = ele['position']
 		let originStyle = ele['style']
 
@@ -55,11 +56,17 @@ class ElementAction {
 				originStyle['height'] = Func.px ( Func.lower( height + delY, minH ) )
 			break
 			case 'se':
-				let fontSize = parseInt(originStyle['fontSize'])
-				let factor = 0.8
-				if (delX < 0 || delY < 0)
-					factor = -0.6
-				originStyle['fontSize'] = Func.px(Func.lower(10, fontSize + factor * Func.gouGu(delX, delY)))
+				if (ele.type === 'icon') {
+					let fontSize = parseInt(originStyle['fontSize'])
+					let factor = 0.8
+					if (delX < 0 || delY < 0)
+						factor = -0.6
+					originStyle['fontSize'] = Func.px(Func.lower(10, fontSize + factor * Func.gouGu(delX, delY)))
+				} else if (ele.type === 'geometric') {
+					let option = ele['option']
+					width = option.width ? parseInt(option.width) : 24
+					option['width'] = option['height'] = Func.px ( Func.lower( width + delX, minW ) )
+				}
 			break
 		}
 		Store.setElement(ele)
@@ -67,7 +74,6 @@ class ElementAction {
 	// 设置样式
 	// value: 新值
 	setStyle(property, value) {
-		console.log(property, value)
 		let ele = Object.assign({}, Store.selectElement)
 		// let ele = Store.selectElement 会导致新添加的属性vue无法跟踪，原因是ele跟Store.selectElement指向同一引用，而Vue观察的引用对象增加属性时是不会觉察到的，所以新建一个ele，然后后面this.json.content[this.selectid] = newElement再重新赋值新的引用对象，Vue就能察觉到了
 		switch ( property ) {
@@ -79,7 +85,6 @@ class ElementAction {
 			case 'border-bottom-width':
 			case 'border-bottom-left-radius':
 			case 'border-bottom-right-radius':
-			console.log(value)
 				ele.style[property] = ( value || 0 ) + 'px'
 				break
 			case 'text':
@@ -91,6 +96,9 @@ class ElementAction {
 			case 'rotate':
 				ele.style['transform'] = `rotate(${value}deg)`
 				break
+			// case 'scale':
+			// 	ele.option['transform'] = `scale(${value})`
+			// 	break
 			case 'textAlign':
 			case 'border-bottom-style':
 				ele.style[property] = value
@@ -102,8 +110,19 @@ class ElementAction {
 			case 'zIndex':
 			case 'color':
 			case 'background-color':
+				// 给geometric使用的
+				if (ele.type === 'geometric')
+					ele.option[property] = value
+				else
+					ele.style[property] = value
+				break
 			case 'border-bottom-color':
 				ele.style[property] = value
+				break
+			case 'widthHeight':
+			// 给geometric使用的
+				ele.option['width'] = ( value || 0) + 'px'
+				ele.option['height'] = ( value || 0) + 'px'
 				break
 
 		}

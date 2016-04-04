@@ -11,6 +11,7 @@ class Store {
 	*/	
 	constructor() {
 		// 初始化应该从用户的项目数据里读取，暂时是读取fake数据
+		window.store = this
 		this.json = fakeData
 		this.selectid = undefined
 		this.selectElement = this.selectid === undefined ? undefined : this.json.content[this.selectid]
@@ -40,10 +41,10 @@ class Store {
 	}
 
 	addElement(newElement) {
-		// 这样赋值才能让 Vue 将其转为响应的
+		// 这样赋值才能让 Vue 将其转为响应的, 下面的删除也是
 		// 这里不能使用Store.content来操作，否则json.content还是保持原来的(指针)
 		let contentNum = ( this.json.contentNum += 1 )
-		newElement['style']['z-index'] = contentNum
+		newElement['style']['zIndex'] = contentNum
 
 		this.json.content = Object.assign({}, this.json.content, {
 			[ contentNum ]: newElement
@@ -51,6 +52,12 @@ class Store {
 		this.selectid = contentNum
 		this.selectElement = this.json.content[this.selectid]
 		this.fetchJson()
+	}
+
+	deleteElement(key) {
+		delete this.json.content[key]
+		this.json.content = Object.assign({}, this.json.content)
+		this.resetElementId(undefined)
 	}
 }
 

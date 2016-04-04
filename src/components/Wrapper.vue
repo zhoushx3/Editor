@@ -116,6 +116,7 @@
 			},
 			zIndex() {
 				// 这个写法会监听到改变，归功于style / element变化
+				console.log(this.style.zIndex)
 				return parseInt(this.style.zIndex || 0)
 			},
 			targeted() {
@@ -204,6 +205,12 @@
 		          	EditorAction.preCopy(this.element)
 		          }
 		        },
+		        delete: {
+		        	name: '删除',
+		        	callback: (key, opt) => {
+		        		EditorAction.deleteElement(this.key)
+		        	}
+		        },
 		        moveUp: {
 		        	name: '上移一层',
 		        	callback:(key, opt)=>{
@@ -213,7 +220,8 @@
 		        moveDown: {
 		        	name: '下移一层',
 		        	disabled: ()=>{
-		      			return this.zIndex === 0
+		        		console.log(this.zIndex, this.style.zIndex)
+		      			return this.style.zIndex === 0
 		        	},
 		        	callback:()=>{
 		        		this.moveZIndex(-1)
@@ -228,7 +236,7 @@
 		      },
 		      trigger: 'right',
 		      reposition: true,
-		      autoHide: true,
+		      autoHide: false,
 		    })
 			}
 		}

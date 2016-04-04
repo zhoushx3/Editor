@@ -1,18 +1,15 @@
 <template lang="jade">
-	.group-single.animated
-		.row(v-for="item in list")
-			.row-item(v-for="o in item" class="animated"
-								@mouseenter="mouseenter($event)"
-								@mouseleave="mouseleave($event)"
-								@click="showDetail(o.type)")
-				.img(:style="{'background-color': o.background }")
-					img(:src="o.img", :alt="o.digest")
-				p {{ o.digest }}
-	component(v-if="selectNest", :is="selectNest", :class.sync="nestClass")
+	#group-group.animated
+		.row-item(v-for="o in list" class="animated")
+			.label(:class="showList[o['key']] ? 'active' : ''", @click="showDetail(o['key'])") {{ o['cn'] }}
+			.detail-container(v-show="showList[o['key']]")
+				.row-detail.animated(v-for="x in o['module']",
+										@mouseenter="mouseenter",
+										@mouseleave="mouseleave")
 </template>
 
 <style lang="less" scoped>
-  .group-single {
+  #group-group {
   	position: absolute;
   	top: 0;
   	bottom: 0;
@@ -21,86 +18,72 @@
   	background-color: #ECECEC;
   	overflow-x: hidden;
   	overflow-y: auto;
+  	.row-item {
+  		width: 100%;
+  		border-bottom: 1px solid #00CC9A;
+  		border-collapse: collapse;
 
-  	.row {
-	  	display: flex;
-	  	flex-direction: row;
-	  	flex-wrap: wrap;
-	  	justify-content: space-around;
-	  	align-items: center;
-	  	align-content: flex-start;
-	  	// flex-flow: row wrap;
-	  	.row-item {
-				width: 80px;
-				box-sizing: border-box;
-		    margin-top: 35px;
-				text-align: center;
-				cursor: pointer;
-				
-				.img {
-					display: flex;
-		    	justify-content: center;
-			    overflow: hidden;
-					width: 100%;
-					height: 80px;
-			    padding: 2px;
-			    border-radius: 5px;
-			    margin-bottom: 10px;
-			    box-shadow: 3px 3px 4px #B5B5B5;
-			    
-			    img {
-			    	width: 50%;
-			    	align-self: center;
-			    }
-				}
-	  	}
+  		.label {
+	  		color: #00CC9A;
+	  		line-height: 30px;
+	  		text-align: center;
+	  		background-color: #fff;
+	  		cursor: pointer;
+
+	  		&.active {
+	  			color: #fff;
+		  		height: 30px;
+	  			background-color: #00CC9A;
+	  		}
+  		}
+  		.detail-container {
+	  		display: flex;
+	  		flex-wrap: wrap;
+	  		justify-content: center;
+
+	  		.row-detail {
+	  			width: 80%;
+	  			height: auto;
+	  			min-height: 30px;
+	  			border: 1px solid #aaa;
+	  			box-shadow: 0 0 10px #bbb;
+	  			margin: 10px;
+	  			cursor: pointer;
+	  			&.hover {
+	  				border-color: #00CC9A;
+	  			}
+	  		}
+  		}
   	}
   }
 </style>
 
 
 <script>
-	import PicNest from './groupSingles/PicNest.vue'
-	import IconNest from './groupSingles/IconNest.vue'
-	import GeometricNest from './groupSingles/GeometricNest.vue'
 	import EditorAction from '../../Action2Store/EditorAction.js'
+	import Modules from '../../data/CombinationModules.js'
 
 	export default {
-		name: 'groupSingle',
+		name: 'groupGroup',
 		data() {
 			return {
-				selectNest: null,
-				nestClass: 'bounceInRight'
+				showList: {
+					'header': true,
+					'content': false,
+					'other': false
+				}
 			}
 		},
 		computed: {
 			list() {
-				let o = {
-					"1": [{
-								type: 'icon',
-								img: 'src/assets/img/icon_white.png',
-								background: '#F86D6D',
-								digest: 'ICON图标',
-							}, {
-								type: 'geometric',
-								img: 'src/assets/img/geometric_white.png',
-								background: 'rgb(131, 165, 234)',
-								digest: '几何图形',
-							}],
-					"2": [{
-								type: 'text',
-								img: 'src/assets/img/text_white.png',
-								background: 'rgb(234, 233, 43)',
-								digest: '文本',
-							}, {
-								type: 'pic',
-								img: 'src/assets/img/img_white.png',
-								background: 'rgb(228, 155, 200)',
-								digest: '图片',
-							}]
-				}
-				return o		
-			}
+				return [{
+					'key': 'header', 'cn': '头部', 'module': Modules['header']
+				}, {
+					'key': 'content', 'cn': '内容', 'module': Modules['content']
+				}, {
+					'key': 'other', 'cn': '其他', 'module': Modules['other']
+				}]
+			},
 		},
 		watch: {
 		},
@@ -112,23 +95,20 @@
 				$(event.target).removeClass('pulse')
 			},
 			showDetail: function(type) {
-				if ( type === 'text') {
-					EditorAction.addElement('text')
-					return 
+				let showList = this.showList
+				for (let o in showList) {
+					showList[o] = type === o
 				}
-				this.selectNest = type + '-nest',
-				this.nestClass = 'bounceInRight'
 			}
 		},
-		components: {
-			'pic-nest': PicNest,
-			'icon-nest': IconNest,
-			'geometric-nest': GeometricNest
-		},
 		ready() {
-			this.$on('closeNest', ()=>{
-				this.nestClass = 'bounceOutLeft'
-			})
+      $('#group-group').niceScroll({
+        cursorcolor: '#d6d6d6',
+        railalign: 'right',
+        horizrailenabled: false,
+        cursoropacitymin:0,
+        autohidemode: false
+      })
 		}
 	}
 

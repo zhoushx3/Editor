@@ -67,6 +67,7 @@ class ElementAction {
 	// 设置样式
 	// value: 新值
 	setStyle(property, value) {
+		console.log(property, value)
 		let ele = Object.assign({}, Store.selectElement)
 		// let ele = Store.selectElement 会导致新添加的属性vue无法跟踪，原因是ele跟Store.selectElement指向同一引用，而Vue观察的引用对象增加属性时是不会觉察到的，所以新建一个ele，然后后面this.json.content[this.selectid] = newElement再重新赋值新的引用对象，Vue就能察觉到了
 		switch ( property ) {
@@ -75,19 +76,24 @@ class ElementAction {
 			case 'fontSize':
 			case 'height':
 			case 'width':
+			case 'border-bottom-width':
+			case 'border-bottom-left-radius':
+			case 'border-bottom-right-radius':
+			console.log(value)
 				ele.style[property] = ( value || 0 ) + 'px'
 				break
 			case 'text':
 				ele.text = value ? value.substr(0, 250) : ''
 				break
 			case 'opacity':
-				ele.style['opacity'] = value/100
+				ele.style[property] = value/100
 				break
 			case 'rotate':
 				ele.style['transform'] = `rotate(${value}deg)`
 				break
 			case 'textAlign':
-				ele.style['textAlign'] = value
+			case 'border-bottom-style':
+				ele.style[property] = value
 				break
 			case 'left':
 			case 'top':
@@ -96,6 +102,7 @@ class ElementAction {
 			case 'zIndex':
 			case 'color':
 			case 'background-color':
+			case 'border-bottom-color':
 				ele.style[property] = value
 				break
 

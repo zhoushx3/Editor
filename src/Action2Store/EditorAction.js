@@ -21,6 +21,8 @@ class EditorAction {
 			case 'text':
 				Store.addElement(textTemplate())
 			break
+			case 'line':
+				Store.addElement(lineTemplate())
 		}
 	}
 	/*
@@ -91,6 +93,26 @@ function textTemplate() {
       "color": "#000"
     }
 	}
+}
+
+function lineTemplate() {
+	return {
+    "type": "line",
+    "position": {
+      "left": "200px",
+      "top": "200px",
+    },
+    "style": {
+      "zIndex": 5,
+      "width": "300px",
+      "height": "0",
+      "border-bottom-width": "2px",
+      "border-bottom-style": "solid",
+      "border-bottom-color": "#00CC9A",
+      "border-bottom-left-radius": 0,
+      "border-bottom-right-radius": 0
+    }
+  }
 }
 
 

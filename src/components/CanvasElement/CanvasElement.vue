@@ -35,9 +35,10 @@
 </style>
 
 <script>
+	import Img from './Img.vue'
 	import Text from './Text.vue'
 	import Icon from './Icon.vue'
-	import Img from './Img.vue'
+	import Line from './Line.vue'
 	import Geometric from './Geometric.vue'
 	import Background from './Background.vue'
 	import constants from '../../data/constants.js'
@@ -63,10 +64,11 @@
 			}
 		},
 		components: {
-			'text-component': Text,
 			'img-component': Img,
-			'geometric-component': Geometric,
+			'line-component': Line,
 			'icon-component': Icon,
+			'text-component': Text,
+			'geometric-component': Geometric,
 			'background-component': Background
 		},
 		watch: {

@@ -37,10 +37,21 @@
 	  props: ['element', 'selectid'],
 	  computed: {
 	  	colorType() {
-	  		let type = ['icon', 'text']
-	  		return type.indexOf(this.element.type) !== -1 ? 'color' : 'background-color'
+	  		switch(this.element.type) {
+	  			case 'icon':
+	  			case 'text':
+	  				return 'color'
+	  				break
+	  			case 'line':
+	  				return 'border-bottom-color'
+	  				break
+	  			default:
+	  				return 'background-color'
+	  				break
+	  		}
 	  	},
 	  	color() {
+	  		console.log(this.colorType)
   			return this.element.style[this.colorType]
 	  	}
 	  },

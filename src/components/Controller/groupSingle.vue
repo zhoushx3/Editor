@@ -60,6 +60,7 @@
 
 
 <script>
+	import PicNest from './groupSingles/PicNest.vue'
 	import IconNest from './groupSingles/IconNest.vue'
 	import GeometricNest from './groupSingles/GeometricNest.vue'
 	import EditorAction from '../../Action2Store/EditorAction.js'
@@ -96,7 +97,13 @@
 								img: 'src/assets/img/img_white.png',
 								background: 'rgb(228, 155, 200)',
 								digest: '图片',
-							}]
+							}],
+					"3": [{
+							type: 'line',
+							img: 'src/assets/img/line_white.png',
+							background: 'rgb(0, 204, 154)',
+							digest: '线条',
+						}]
 				}
 				return o		
 			}
@@ -115,15 +122,16 @@
 					EditorAction.addElement('text')
 					return 
 				}
-				if ( type === 'pic') {
-
-					return 
+				if ( type === 'line') {
+					EditorAction.addElement('line')
+					return
 				}
 				this.selectNest = type + '-nest',
 				this.nestClass = 'bounceInRight'
 			}
 		},
 		components: {
+			'pic-nest': PicNest,
 			'icon-nest': IconNest,
 			'geometric-nest': GeometricNest
 		},

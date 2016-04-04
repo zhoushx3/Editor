@@ -1,6 +1,6 @@
 <template lang="jade">
 	.wrapper(:style="style", :keyId="key")
-		.mask(@mousedown="drag", :class="targeted")
+		.mask(@mousedown="drag", :class="targeted", :style="optionStyle")
 			.se-flex(v-if="seType", @mousedown="flex('se', $event)" )
 			.w-flex.flex(v-if="weType", @mousedown="flex('w', $event)")
 			.e-flex.flex(v-if="weType", @mousedown="flex('e', $event)")
@@ -23,6 +23,7 @@
 			left: 0;
 			right: 0;
 			bottom: 0;
+			min-height: 2px;//为line考虑, line的height:0
 
 			&:hover, &.targeted {
 				border: 1px dashed #000;
@@ -107,6 +108,12 @@
 			style() {
 				return Object.assign({}, this.element.position, this.element.style)
 			},
+			optionStyle() {
+				let o = {}
+				if (this.type === 'line')
+					o.height = this.element.style['border-bottom-width']
+				return o
+			},
 			zIndex() {
 				// 这个写法会监听到改变，归功于style / element变化
 				return parseInt(this.style.zIndex || 0)
@@ -115,7 +122,7 @@
 				return this.selectid == this.key ? 'targeted' : ''
 			},
 			weType() {
-				let typeList = ['text', 'img']
+				let typeList = ['text', 'img', 'line']
 				return typeList.indexOf(this.type) !== -1
 			},
 			nsType() {

@@ -8,6 +8,7 @@
 				position(v-if="showPositionController", :element="element")
 				size(:element="element")
 				other(:element="element")
+				linestyle(v-if="type==='line'", :element="element")
 	.group
 		.group-single(@click="showPanel('single')")
 		.group-group(@click="showPanel('group')")
@@ -105,6 +106,7 @@
 	import Color from './elementController/Color.vue'
 	import Size from './elementController/Size.vue'
 	import Position from './elementController/Position.vue'
+	import LineStyle from './elementController/LineStyle.vue'
 	import groupPage from './groupPage.vue'
 	import groupGroup from './groupGroup.vue'
 	import groupSingle from './groupSingle.vue'
@@ -123,19 +125,15 @@
 				return this.element['type']
 			},
 			showColorController() {
-				let type = ['icon', 'text', 'geometric', 'background']
+				let type = ['icon', 'text', 'geometric', 'background', 'line']
 				return type.indexOf(this.type) !== -1
 			},
 			showFontController() {
 				let type = ['text']
 				return type.indexOf(this.type) !== -1
 			},
-			showFlexController() {
-				let type = ['text', 'img']
-				return type.indexOf(this.type) !== -1
-			},
 			showPositionController() {
-				let type = ['icon', 'text', 'geometric', 'img']
+				let type = ['icon', 'text', 'geometric', 'img', 'line']
 				return type.indexOf(this.type) !== -1
 			}
 		},
@@ -156,7 +154,8 @@
 			'color': Color,
 			'size': Size,
 			'other': Other,
-			'position': Position
+			'position': Position,
+			'linestyle': LineStyle
 		},
 		ready() {
       $('#controller').niceScroll({

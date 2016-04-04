@@ -56,6 +56,12 @@
 					case 'background':
 						return []
 						break
+					case 'line':
+						return [{
+							key: 'width', value: parseInt(this.element.style.width) || 0, cn: '宽度'
+						}, {
+							key: 'border-bottom-width', value: parseInt(this.element.style['border-bottom-width']) || 0, cn: '厚度'
+						}]
 				}
 			}
 		},
